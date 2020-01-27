@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { requestSignUpStart } from '../actions/authActions';
-import { useAuthActions } from "../useAuthActions";
+// import { requestSignUpStart } from '../actions/authActions';
+// import { useAuthActions } from "../useAuthActions";
 
 const INPUT_FIELDS = [
     {
@@ -51,8 +51,8 @@ const SignUp = () => {
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
-        dispatch(requestSignUpStart(userDetails));
-        dispatch(useAuthActions.signUp(userDetails));
+        // dispatch(requestSignUpStart(userDetails));
+        // dispatch(useAuthActions.signUp(userDetails));
     }
 
     return (
