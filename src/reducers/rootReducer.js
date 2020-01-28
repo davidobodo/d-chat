@@ -5,7 +5,9 @@ import messages from './messages'
 import details from './details'
 import selectedMessage from './selectedMessage'
 import activeUserId from './activeUserId'
-import {combineReducers} from 'redux'
+import { combineReducers } from 'redux'
+import { firebaseReducer } from 'react-redux-firebase';
+import { firestoreReducer } from 'redux-firestore';
 
 export default combineReducers({
 	user,
@@ -14,5 +16,7 @@ export default combineReducers({
 	typing,
 	activeUserId,
 	selectedMessage,
-	details
+	details,
+	firebase: firebaseReducer,
+	firestore: firestoreReducer,
 })

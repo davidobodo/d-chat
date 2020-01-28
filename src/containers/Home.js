@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useSelector, shallowEqual } from 'react-redux';
+
 import './Home.css';
 import Main from '../components/Main'
 import Sidebar from '../components/Sidebar'
@@ -8,6 +10,17 @@ import _ from 'lodash'
 
 const Home = () => {
     //gets state property names and values
+
+    const {
+
+        state,
+    } = useSelector(state => ({
+
+        state: state,
+    }), shallowEqual);
+
+    console.log(state)
+
     const { contacts, user, activeUserId } = store.getState();
     return (
         //pass the state values as props into our two components
