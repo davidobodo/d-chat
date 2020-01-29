@@ -10,8 +10,9 @@ import store from './store/store';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
-import { ReactReduxFirebaseProvider, firebaseReducer } from 'react-redux-firebase';
-import { createFirestoreInstance, firestoreReducer } from 'redux-firestore';
+import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
+import { createFirestoreInstance } from 'redux-firestore';
+import ReduxSagaFirebase from "redux-saga-firebase";
 
 const fbConfig = {
     apiKey: "AIzaSyAwuajOuBV1dZQOnDUVziiQwjwhBCfXndc",
@@ -24,12 +25,16 @@ const fbConfig = {
     measurementId: "G-TH6YGMVDT4"
 };
 
+firebase.initializeApp(fbConfig);
+
+export const reduxSagaFirebase = new ReduxSagaFirebase(fbConfig)
+
 const rrfConfig = {
     userProfile: 'users',
     useFirestoreForProfile: true,
 };
 
-firebase.initializeApp(fbConfig);
+
 firebase.firestore();
 
 const rrfProps = {
