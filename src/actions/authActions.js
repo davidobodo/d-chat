@@ -17,7 +17,6 @@ export const requestSignUpStart = (payload) => {
 }
 
 export const requestSignUpSuccess = (payload) => {
-    console.log(payload)
     return ({
         type: "SUCCESS",
         payload

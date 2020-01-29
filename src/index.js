@@ -35,7 +35,7 @@ const rrfConfig = {
 };
 
 
-firebase.firestore();
+export var firestore = firebase.firestore();
 
 const rrfProps = {
     firebase,
