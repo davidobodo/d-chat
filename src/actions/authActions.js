@@ -17,6 +17,7 @@ export const requestSignUpStart = (payload) => {
 }
 
 export const requestSignUpSuccess = (payload) => {
+    console.log(payload)
     return ({
         type: REQUEST_SIGNUP_SUCCESS,
         payload
@@ -24,6 +25,7 @@ export const requestSignUpSuccess = (payload) => {
 }
 
 export const requestSignUpError = (error) => {
+    console.log(error)
     return ({
         type: REQUEST_SIGNUP_FAIL,
         error
