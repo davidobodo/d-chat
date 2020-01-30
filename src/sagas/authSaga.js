@@ -6,7 +6,7 @@ import { firestore } from '../index';
 import { takeEvery, put, all, call } from "redux-saga/effects";
 import { REQUEST_SIGNUP_START } from "../constants/action-types";
 
-import { requestSignUpSuccess } from '../actions/authActions';
+import { requestSignUpSuccess, requestSignUpError } from '../actions/authActions';
 
 //worker saga: fired on each REQUEST_SIGNUP_START action
 function* handleUserSignUp({ payload }) {
@@ -19,15 +19,14 @@ function* handleUserSignUp({ payload }) {
             password
         )
         if (user) {
-            console.log(user.user.uid)
-            return firestore.collection('users').doc(user.user.uid).set({
+            firestore.collection('users').doc(user.user.uid).set({
                 firstName: firstName,
                 lastName: lastName,
             })
+            yield put(requestSignUpSuccess(user))
         }
-        yield put(requestSignUpSuccess(user))
     } catch (err) {
-        console.log(err)
+        yield put(requestSignUpError(err.message))
     }
 }
 
