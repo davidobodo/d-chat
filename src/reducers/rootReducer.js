@@ -8,6 +8,7 @@ import activeUserId from './activeUserId'
 import { combineReducers } from 'redux'
 import { firebaseReducer } from 'react-redux-firebase';
 import { firestoreReducer } from 'redux-firestore';
+import authReducer from './authReducers';
 
 export default combineReducers({
 	user,
@@ -19,4 +20,5 @@ export default combineReducers({
 	details,
 	firebase: firebaseReducer,
 	firestore: firestoreReducer,
+	authReducer
 })

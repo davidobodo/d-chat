@@ -15,8 +15,7 @@ function* handleUserLogin({ payload }) {
             email,
             password
         )
-        console.log(user)
-        yield put(requestUserLoginSuccess())
+        yield put(requestUserLoginSuccess(user))
 
     } catch (err) {
         yield put(requestUserLoginError(err.message))

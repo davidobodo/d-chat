@@ -2,10 +2,13 @@ import {
     REQUEST_SIGNUP_FAIL,
     REQUEST_SIGNUP_START,
     REQUEST_SIGNUP_SUCCESS,
+    REQUEST_USERLOGIN_START,
+    REQUEST_USERLOGIN_SUCCESS,
+    REQUEST_USERLOGIN_FAIL,
 } from "../constants/action-types";
 
 const initialState = {
-
+    user: null
 }
 
 export default (state = initialState, action) => {
@@ -18,8 +21,22 @@ export default (state = initialState, action) => {
         case REQUEST_SIGNUP_SUCCESS:
             return {
                 ...state,
+                user: payload
             };
         case REQUEST_SIGNUP_FAIL:
+            return {
+                ...state,
+            };
+        case REQUEST_USERLOGIN_START:
+            return {
+                ...state,
+            };
+        case REQUEST_USERLOGIN_SUCCESS:
+            console.log(payload)
+            return {
+                ...state,
+            };
+        case REQUEST_USERLOGIN_FAIL:
             return {
                 ...state,
             };
