@@ -2,6 +2,9 @@ import {
     REQUEST_SIGNUP_FAIL,
     REQUEST_SIGNUP_START,
     REQUEST_SIGNUP_SUCCESS,
+    REQUEST_USERLOGIN_START,
+    REQUEST_USERLOGIN_SUCCESS,
+    REQUEST_USERLOGIN_FAIL,
 } from "../constants/action-types";
 
 // export const requestSignUpStart = (payload) => ({
@@ -17,7 +20,6 @@ export const requestSignUpStart = (payload) => {
 }
 
 export const requestSignUpSuccess = (payload) => {
-    console.log(payload)
     return ({
         type: REQUEST_SIGNUP_SUCCESS,
         payload
@@ -25,9 +27,29 @@ export const requestSignUpSuccess = (payload) => {
 }
 
 export const requestSignUpError = (error) => {
-    console.log(error)
     return ({
         type: REQUEST_SIGNUP_FAIL,
         error
+    })
+}
+
+export const requestUserLogin = (payload) => {
+    return ({
+        type: REQUEST_USERLOGIN_START,
+        payload
+    })
+}
+
+export const requestUserLoginSuccess = (payload) => {
+    return ({
+        type: REQUEST_USERLOGIN_SUCCESS,
+        payload
+    })
+}
+
+export const requestUserLoginError = (payload) => {
+    return ({
+        type: REQUEST_USERLOGIN_FAIL,
+        payload
     })
 }
