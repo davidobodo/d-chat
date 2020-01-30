@@ -12,7 +12,6 @@ import 'firebase/auth';
 import 'firebase/firestore';
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
 import { createFirestoreInstance } from 'redux-firestore';
-import ReduxSagaFirebase from "redux-saga-firebase";
 
 const fbConfig = {
     apiKey: "AIzaSyAwuajOuBV1dZQOnDUVziiQwjwhBCfXndc",
@@ -27,7 +26,6 @@ const fbConfig = {
 
 firebase.initializeApp(fbConfig);
 
-export const reduxSagaFirebase = new ReduxSagaFirebase(fbConfig)
 
 const rrfConfig = {
     userProfile: 'users',

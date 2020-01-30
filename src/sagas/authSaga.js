@@ -1,11 +1,7 @@
-// import { reduxSagaFirebase } from '../index';
 import firebase from 'firebase/app';
-import 'firebase/firestore'
 import { firestore } from '../index';
-
 import { takeEvery, put, all, call } from "redux-saga/effects";
 import { REQUEST_SIGNUP_START } from "../constants/action-types";
-
 import { requestSignUpSuccess, requestSignUpError } from '../actions/authActions';
 
 //worker saga: fired on each REQUEST_SIGNUP_START action
