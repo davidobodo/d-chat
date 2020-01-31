@@ -7,7 +7,6 @@ import { requestUserLoginSuccess, requestUserLoginError } from '../actions/authA
 //worker saga: fired on each REQUEST_USERLOGIN_START action
 function* handleUserLogin({ payload }) {
     const { email, password } = payload;
-    console.log(email, password)
     try {
         const auth = firebase.auth()
         const user = yield call(

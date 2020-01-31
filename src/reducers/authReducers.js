@@ -32,7 +32,6 @@ export default (state = initialState, action) => {
                 ...state,
             };
         case REQUEST_USERLOGIN_SUCCESS:
-            console.log(payload)
             return {
                 ...state,
             };
