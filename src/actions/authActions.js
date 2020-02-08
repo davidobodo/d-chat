@@ -5,6 +5,9 @@ import {
     REQUEST_USERLOGIN_START,
     REQUEST_USERLOGIN_SUCCESS,
     REQUEST_USERLOGIN_FAIL,
+    SIGNOUT_START,
+    SIGNOUT_SUCCESS,
+    SIGNOUT_FAIL,
 } from "../constants/action-types";
 
 // export const requestSignUpStart = (payload) => ({
@@ -52,4 +55,22 @@ export const requestUserLoginError = (payload) => {
         type: REQUEST_USERLOGIN_FAIL,
         payload
     })
+}
+
+export const signOutStart = (payload) => {
+    return {
+        type: SIGNOUT_START
+    }
+}
+export const signOutSuccess = (payload) => {
+    return {
+        type: SIGNOUT_SUCCESS,
+        payload
+    }
+}
+export const signOutError = (error) => {
+    return {
+        type: SIGNOUT_FAIL,
+        error
+    }
 }

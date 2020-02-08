@@ -1,5 +1,4 @@
 import firebase from 'firebase/app';
-import { firestore } from '../index';
 import { takeEvery, put, all, call } from "redux-saga/effects";
 import { REQUEST_USERLOGIN_START } from "../constants/action-types";
 import { requestUserLoginSuccess, requestUserLoginError } from '../actions/authActions';

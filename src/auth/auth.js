@@ -11,7 +11,7 @@ const Auth = () => {
         return {
             firebase: state.firebase
         }
-    })
+    }, shallowEqual)
 
     if (firebase.auth.uid) {
         return <Redirect to="/" />

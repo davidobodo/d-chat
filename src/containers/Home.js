@@ -19,7 +19,6 @@ const Home = () => {
         state: state,
     }), shallowEqual);
 
-    console.log(state)
 
     const { contacts, user, activeUserId } = store.getState();
     return (
