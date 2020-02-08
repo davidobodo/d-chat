@@ -4,7 +4,6 @@ import { SIGNOUT_START } from "../constants/action-types";
 import { signOutSuccess, signOutError } from "../actions/authActions";
 
 function* handleUserSignOut() {
-    console.log('ready to sign out')
     try {
         const auth = firebase.auth();
         const user = yield call(

@@ -1,12 +1,11 @@
 import React from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import "./Empty.css";
 import { signOutStart } from '../actions/authActions';
 
 
-const Empty = ({ user }) => {
+const Empty = ({ user, currentUser }) => {
 	const dispatch = useDispatch();
-
 
 	const handleUserSignOut = () => {
 		dispatch(signOutStart())
@@ -17,13 +16,12 @@ const Empty = ({ user }) => {
 	//Take out all user props using destructuring
 	const { name, profile_pic, status } = user;
 
-	//Use javascript string.split method to grab first word of name and store in a variable
-	const first_name = name.split(" ")[0];
+	const { firstName, lastName } = currentUser;
+
 	return (
-		//output properties where needed
 		<div className="Empty">
 			<button onClick={handleUserSignOut}>Logout</button>
-			<h1 className="Empty__name">Welcome, {first_name} </h1>
+			<h1 className="Empty__name">Welcome, {firstName} {lastName} </h1>
 			<img src={profile_pic} alt={name} className="Empty__img" />
 			<p className="Empty__status">
 				<b>Status:</b> {status}
