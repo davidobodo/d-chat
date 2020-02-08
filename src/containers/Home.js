@@ -4,18 +4,21 @@ import { useSelector, shallowEqual } from 'react-redux';
 
 import './Home.css';
 import Main from '../components/Main'
-import Sidebar from '../components/Sidebar'
-import store from '../store/store'
-import _ from 'lodash'
+import Sidebar from '../components/Sidebar';
+import store from '../store/store';
+import _ from 'lodash';
+import { firestoreConnect } from 'react-redux-firebase';
 
 const Home = () => {
-    //gets state property names and values
-
     const {
-        currentUser
+        currentUser,
+        allUsers
     } = useSelector(state => ({
         currentUser: state.firebase.profile,
+        allUsers: state.firestore.ordered.users,
     }), shallowEqual);
+
+    console.log(allUsers)
 
     //----------------------------------------------------------
     // previous dummy contact details:
@@ -25,10 +28,9 @@ const Home = () => {
 
 
     return (
-        //pass the state values as props into our two components
         //use lodash to convert contacts from objects to array
         <div className="home">
-            <Sidebar contacts={_.values(contacts)} />
+            <Sidebar contacts={allUsers} />
             <Main
                 user={user}
                 activeUserId={activeUserId}
@@ -37,4 +39,4 @@ const Home = () => {
     );
 }
 
-export default Home;
+export default firestoreConnect(() => ['users'])(Home);
