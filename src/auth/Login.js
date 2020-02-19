@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { requestUserLogin } from "../actions/authActions";
+import "./login.css";
 
 const INPUT_FIELDS = [
     {
@@ -34,21 +35,27 @@ const Login = () => {
     }
 
     return (
-        <form onSubmit={handleOnSubmit} noValidate>
-            {INPUT_FIELDS.map(field => {
-                const { name, type, placeholder } = field;
-                return (
-                    <div className="form-input" key={name}>
-                        <label>{name}</label>
-                        <input
-                            type={type}
-                            placeholder={placeholder}
-                            onChange={handleOnChange}
-                            name={name} />
-                    </div>)
-            })}
-            <button>Submit</button>
-        </form>
+        <div className="login-wrapper">
+            <h1>Hello</h1>
+            <h3>Sign in to your account</h3>
+            <form onSubmit={handleOnSubmit} noValidate>
+                {INPUT_FIELDS.map(field => {
+                    const { name, type, placeholder } = field;
+                    return (
+                        <div className="login-form-input" key={name}>
+                            {/* <label>{name}</label> */}
+                            <input
+                                type={type}
+                                placeholder={placeholder}
+                                onChange={handleOnChange}
+                                name={name} />
+                        </div>)
+                })}
+                <a className="forgot-password">Forgot your password?</a>
+                <button>Sign in</button>
+            </form>
+            <h5>Don't have an account? <a>Create</a></h5>
+        </div>
     )
 }
 
