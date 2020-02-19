@@ -1,14 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { useSelector, shallowEqual } from 'react-redux';
 
 import Auth from '../auth/auth';
 import Home from './Home';
 
-
-
 const App = () => {
-	const firebase = useSelector(state => state.firebase, shallowEqual);
+
 
 	return (
 		<Router>

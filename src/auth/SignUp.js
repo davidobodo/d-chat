@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faUnlockAlt } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelopeOpenText } from '@fortawesome/free-solid-svg-icons';
+
 import { requestSignUpStart } from '../actions/authActions';
 import "./signup.css";
 
@@ -9,33 +14,38 @@ const INPUT_FIELDS = [
         name: 'firstName',
         type: 'text',
         placeholder: 'firstName',
+        icon: faUser
     },
     {
         name: 'lastName',
         type: 'text',
         placeholder: 'lastName',
+        icon: faUser
     },
 
     {
         name: 'email',
         type: 'email',
         placeholder: 'email',
+        icon: faEnvelopeOpenText
     },
     {
         name: 'password',
         type: 'password',
         placeholder: 'password',
+        icon: faUnlockAlt
     },
     {
         name: 'confirmPassword',
         type: 'password',
         placeholder: 'confirmPassword',
+        icon: faUnlockAlt
     },
 ]
 
 
 
-const SignUp = () => {
+const SignUp = ({ handleSetAuthState, requestCreateAccount }) => {
     const dispatch = useDispatch();
     const [userDetails, setUserDetails] = useState({
         firstName: '',
@@ -54,15 +64,18 @@ const SignUp = () => {
         dispatch(requestSignUpStart(userDetails));
     }
 
+    const should_scale = requestCreateAccount ? "signup-wrapper scale-up" : "signup-wrapper";
+
     return (
-        <div className="signup-wrapper">
+        <div className={should_scale}>
+            <div className="back-icon" onClick={handleSetAuthState}>&#8592;</div>
             <h2>Create account</h2>
             <form onSubmit={handleOnSubmit} noValidate>
                 {INPUT_FIELDS.map(field => {
-                    const { name, type, placeholder } = field;
+                    const { name, type, placeholder, icon } = field;
                     return (
                         <div className="signup-form-input" key={name}>
-                            {/* <label>{name}</label> */}
+                            <FontAwesomeIcon icon={icon} />
                             <input
                                 type={type}
                                 placeholder={placeholder}
