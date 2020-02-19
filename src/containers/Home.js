@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useSelector, shallowEqual } from 'react-redux';
-
+import { Redirect } from 'react-router-dom';
 import './Home.css';
 import Main from '../components/Main'
 import Sidebar from '../components/Sidebar';
@@ -11,14 +11,18 @@ import { firestoreConnect } from 'react-redux-firebase';
 
 const Home = () => {
     const {
-        currentUser,
+        firebase,
         allUsers
     } = useSelector(state => ({
-        currentUser: state.firebase.profile,
+        firebase: state.firebase,
         allUsers: state.firestore.ordered.users,
     }), shallowEqual);
 
-    console.log(allUsers)
+    if (!firebase.auth.uid) {
+        return <Redirect to="/auth" />
+    }
+
+    const currentUser = firebase.profile;
 
     //----------------------------------------------------------
     // previous dummy contact details:
