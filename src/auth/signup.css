@@ -29,6 +29,8 @@
     outline: none;
     display: flex;
     background-color: #ffffff;
+    box-shadow:  5px 5px 35px #ededed, 
+             -5px -5px 35px #ffffff;
 }
 
 svg{
@@ -42,10 +44,20 @@ svg{
     flex: 1;
 }
 
-.signup-wrapper button{
-    display: block;
-    margin-left: auto;
-    outline: none;
+.signup-btn{
+    text-align: right;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.signup-btn button{
+    border: none;
+    color: #ffffff;
+    background-color: #F9933B;
+    font-size: 25px;
+    padding: 5px 15px;
+    margin-left: 15px;
+    cursor: pointer;
 }
 
 .scale-up{

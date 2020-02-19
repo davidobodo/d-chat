@@ -87,7 +87,9 @@ const SignUp = ({ handleSetAuthState, requestCreateAccount }) => {
                                 name={name} />
                         </div>)
                 })}
-                <button>Create</button>
+                <div className="signup-btn">
+                    Create<button><i className="fas fa-long-arrow-alt-right"></i></button>
+                </div>
             </form>
             <img src={blob1} alt="blob1" className="blue-image" />
         </div>

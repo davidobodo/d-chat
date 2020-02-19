@@ -62,7 +62,9 @@ const Login = ({ handleSetAuthState, requestCreateAccount }) => {
                         </div>)
                 })}
                 <a className="forgot-password">Forgot your password?</a>
-                <button>Sign in</button>
+                <div className="login-btn">
+                    Sign in<button><i className="fas fa-long-arrow-alt-right"></i></button>
+                </div>
             </form>
             <h5>Don't have an account? <a onClick={handleSetAuthState}>Create</a></h5>
         </div>
