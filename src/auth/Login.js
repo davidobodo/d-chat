@@ -6,7 +6,7 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faUnlockAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { requestUserLogin } from "../actions/authActions";
-import { blob } from "../assets/images/blob-shape.svg";
+import blob from "../assets/images/blob2.svg";
 import "./login.css";
 
 const INPUT_FIELDS = [
@@ -47,7 +47,7 @@ const Login = ({ handleSetAuthState, requestCreateAccount }) => {
         <div className={should_scale}>
             <h1>Hello</h1>
             <h3>Sign in to your account</h3>
-            {/* <img src={blob} alt="blob" /> */}
+            <img src={blob} alt="blob" className="login-wrapper__image" />
             <form onSubmit={handleOnSubmit} noValidate>
                 {INPUT_FIELDS.map(field => {
                     const { name, type, placeholder, icon } = field;

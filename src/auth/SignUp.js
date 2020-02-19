@@ -8,6 +8,9 @@ import { faEnvelopeOpenText } from '@fortawesome/free-solid-svg-icons';
 
 import { requestSignUpStart } from '../actions/authActions';
 import "./signup.css";
+import blob1 from "../assets/images/blob1.svg";
+import blob2 from "../assets/images/blob2.svg";
+
 
 const INPUT_FIELDS = [
     {
@@ -69,6 +72,7 @@ const SignUp = ({ handleSetAuthState, requestCreateAccount }) => {
     return (
         <div className={should_scale}>
             <div className="back-icon" onClick={handleSetAuthState}>&#8592;</div>
+            <img src={blob2} alt="blob2" className="orange-image" />
             <h2>Create account</h2>
             <form onSubmit={handleOnSubmit} noValidate>
                 {INPUT_FIELDS.map(field => {
@@ -85,6 +89,7 @@ const SignUp = ({ handleSetAuthState, requestCreateAccount }) => {
                 })}
                 <button>Create</button>
             </form>
+            <img src={blob1} alt="blob1" className="blue-image" />
         </div>
     )
 }

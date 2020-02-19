@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import Login from './Login';
 import SignUp from './SignUp';
 import './auth.css';
+import blob from "../assets/images/blob1.svg";
 
 const Auth = () => {
     const [requestCreateAccount, setRequestCreateAccount] = useState();
@@ -21,6 +22,7 @@ const Auth = () => {
             <SignUp
                 handleSetAuthState={() => setRequestCreateAccount(false)}
                 requestCreateAccount={requestCreateAccount} />
+            <img src={blob} alt="blob" className="auth__wrapper__img" />
         </div>
     )
 }
