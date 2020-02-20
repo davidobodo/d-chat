@@ -40,7 +40,6 @@ class Chats extends Component {
 
 	removeEditDeleteBox = () => {
 		this.setState({ editDel: false })
-		console.log('remove')
 	}
 
 	//this is the function that gets run due to clicking any of the span tags
@@ -79,7 +78,6 @@ class Chats extends Component {
 	render() {
 		const details = store.getState().details;
 		const { number, text } = details
-		console.log(this.props.messages)
 
 		return (
 			//pass in this.chatRef into entire div to enable automatic scrolling of cha component
