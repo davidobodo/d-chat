@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector, shallowEqual } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import "./Empty.css";
 import { signOutStart } from '../../actions/authActions';
 
@@ -20,7 +20,7 @@ const Empty = ({ user, currentUser }) => {
 
 	return (
 		<div className="Empty">
-			<button onClick={handleUserSignOut}>Logout</button>
+			<button className="Empty__logout-button" onClick={handleUserSignOut}>Logout</button>
 			<h1 className="Empty__name">Welcome, {firstName} {lastName} </h1>
 			<img src={profile_pic} alt={name} className="Empty__img" />
 			<p className="Empty__status">

@@ -6,7 +6,6 @@ import './Home.css';
 import Main from '../../components/main/Main'
 import Sidebar from '../../components/sidebar/Sidebar';
 import store from '../../store/store';
-import _ from 'lodash';
 import { firestoreConnect } from 'react-redux-firebase';
 
 const Home = () => {

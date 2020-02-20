@@ -59,6 +59,7 @@ svg{
     margin-left: 15px;
     cursor: pointer;
     outline: none;
+    border-radius: 26px;
 }
 
 .scale-up{

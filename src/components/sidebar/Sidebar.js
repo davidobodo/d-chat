@@ -7,7 +7,7 @@ const Sidebar = (props) => {
 	return (
 
 		<aside className="Sidebar">
-			{contacts && contacts.map(contact => <User user={contact} key={contact.user_id} />
+			{contacts && contacts.map((contact, i) => <User user={contact} key={i} />
 			)}
 		</aside>
 	)

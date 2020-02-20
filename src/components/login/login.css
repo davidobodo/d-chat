@@ -62,10 +62,11 @@ svg{
 
 .forgot-password{
         display: block;
-        text-align: right;
         opacity: 0.3;
         font-size: 13px;
         margin-bottom: 80px;
+        border: none;
+        margin-left: auto;
 }
 
 .login-btn{
@@ -83,6 +84,7 @@ svg{
         margin-left: 15px;
         cursor: pointer;
         outline: none;
+        border-radius: 26px;
 }
 
 .login-wrapper h5{
@@ -90,10 +92,11 @@ svg{
         font-weight: 400;
 }
 
-.login-wrapper h5 a {
+.login-wrapper h5 button {
         font-weight: 800;
         text-decoration: underline;
         cursor: pointer;
+        border: none;
 }
 
 .scale-down{

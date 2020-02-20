@@ -6,7 +6,7 @@ border-bottom: 1px solid rgba(189, 189, 192, 0.2);
 color: #fff;
 }
 
-button{
+.Header__button{
 	   border: 1px solid black;
     padding: 5px 30px;
     border-radius: 26px;
