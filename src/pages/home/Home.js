@@ -3,9 +3,9 @@ import React from 'react';
 import { useSelector, shallowEqual } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import './Home.css';
-import Main from '../components/Main'
-import Sidebar from '../components/Sidebar';
-import store from '../store/store';
+import Main from '../../components/main/Main'
+import Sidebar from '../../components/sidebar/Sidebar';
+import store from '../../store/store';
 import _ from 'lodash';
 import { firestoreConnect } from 'react-redux-firebase';
 

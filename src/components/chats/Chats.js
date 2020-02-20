@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import './Chats.css'
-import store from '../store/store'
-import { details } from '../actions/action'
-import DelEdit from './DelEdit'
-import Chat from './Chat'
-import { editMessage } from '../actions/action'
-import { deleteMessage } from '../actions/action'
+import store from '../../store/store'
+import { details } from '../../actions/action'
+import DelEdit from '../delEdit/DelEdit'
+import Chat from '../chat/Chat'
+import { editMessage } from '../../actions/action'
+import { deleteMessage } from '../../actions/action'
 
 class Chats extends Component {
 	//this code is to make sure the chat scrolls to the bottom when there is a submission of any message

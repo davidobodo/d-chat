@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import Auth from '../auth/auth';
-import Home from './Home';
+import Auth from './pages/auth/auth';
+import Home from './pages/home/Home';
 
 const App = () => {
 

@@ -1,10 +1,10 @@
 import React from "react";
-import Header from './Header'
-import Chats from './Chats'
-import store from '../store/store'
+import Header from '../header/Header'
+import Chats from '../chats/Chats'
+import store from '../../store/store'
 import _ from 'lodash'
 import './ChatWindow.css'
-import MessageInput from '../containers/MessageInput'
+import MessageInput from '../messageInput/MessageInput'
 
 //take in the defined activeuserid as a prop
 const ChatWindow = ({ activeUserId }) => {

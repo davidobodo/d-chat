@@ -4,33 +4,17 @@ import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faUnlockAlt } from '@fortawesome/free-solid-svg-icons';
-import { faEnvelopeOpenText } from '@fortawesome/free-solid-svg-icons';
 
-import { requestSignUpStart } from '../actions/authActions';
-import "./signup.css";
-import blob1 from "../assets/images/blob1.svg";
-import blob2 from "../assets/images/blob2.svg";
-
+import { requestUserLogin } from "../../actions/authActions";
+import blob from "../../assets/images/blob2.svg";
+import "./login.css";
 
 const INPUT_FIELDS = [
-    {
-        name: 'firstName',
-        type: 'text',
-        placeholder: 'firstName',
-        icon: faUser
-    },
-    {
-        name: 'lastName',
-        type: 'text',
-        placeholder: 'lastName',
-        icon: faUser
-    },
-
     {
         name: 'email',
         type: 'email',
         placeholder: 'email',
-        icon: faEnvelopeOpenText
+        icon: faUser
     },
     {
         name: 'password',
@@ -38,21 +22,11 @@ const INPUT_FIELDS = [
         placeholder: 'password',
         icon: faUnlockAlt
     },
-    {
-        name: 'confirmPassword',
-        type: 'password',
-        placeholder: 'confirmPassword',
-        icon: faUnlockAlt
-    },
 ]
 
-
-
-const SignUp = ({ handleSetAuthState, requestCreateAccount }) => {
+const Login = ({ handleSetAuthState, requestCreateAccount }) => {
     const dispatch = useDispatch();
     const [userDetails, setUserDetails] = useState({
-        firstName: '',
-        lastName: '',
         email: '',
         password: '',
     })
@@ -64,21 +38,21 @@ const SignUp = ({ handleSetAuthState, requestCreateAccount }) => {
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
-        dispatch(requestSignUpStart(userDetails));
+        dispatch(requestUserLogin(userDetails));
     }
 
-    const should_scale = requestCreateAccount ? "signup-wrapper scale-up" : "signup-wrapper";
+    const should_scale = requestCreateAccount ? "login-wrapper scale-down" : "login-wrapper";
 
     return (
         <div className={should_scale}>
-            <div className="back-icon" onClick={handleSetAuthState}>&#8592;</div>
-            <img src={blob2} alt="blob2" className="orange-image" />
-            <h2>Create account</h2>
+            <h1>Hello</h1>
+            <h3>Sign in to your account</h3>
+            <img src={blob} alt="blob" className="login-wrapper__image" />
             <form onSubmit={handleOnSubmit} noValidate>
                 {INPUT_FIELDS.map(field => {
                     const { name, type, placeholder, icon } = field;
                     return (
-                        <div className="signup-form-input" key={name}>
+                        <div className="login-form-input" key={name}>
                             <FontAwesomeIcon icon={icon} />
                             <input
                                 type={type}
@@ -87,13 +61,14 @@ const SignUp = ({ handleSetAuthState, requestCreateAccount }) => {
                                 name={name} />
                         </div>)
                 })}
-                <div className="signup-btn">
-                    Create<button><i className="fas fa-long-arrow-alt-right"></i></button>
+                <a className="forgot-password">Forgot your password?</a>
+                <div className="login-btn">
+                    Sign in<button><i className="fas fa-long-arrow-alt-right"></i></button>
                 </div>
             </form>
-            <img src={blob1} alt="blob1" className="blue-image" />
+            <h5>Don't have an account? <a onClick={handleSetAuthState}>Create</a></h5>
         </div>
     )
 }
 
-export default SignUp
+export default Login

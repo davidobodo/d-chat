@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import "./Empty.css";
-import { signOutStart } from '../actions/authActions';
+import { signOutStart } from '../../actions/authActions';
 
 
 const Empty = ({ user, currentUser }) => {

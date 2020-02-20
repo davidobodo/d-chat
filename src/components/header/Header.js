@@ -1,7 +1,7 @@
 import React from 'react'
 import './Header.css'
-import store from '../store/store'
-import { unsetActiveUser } from '../actions/action'
+import store from '../../store/store'
+import { unsetActiveUser } from '../../actions/action'
 
 
 //take in props that were sent from parentelement using destructuring since we want to give them same variable names

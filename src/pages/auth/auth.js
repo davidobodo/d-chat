@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useSelector, shallowEqual } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import Login from './Login';
-import SignUp from './SignUp';
+import Login from '../../components/login/Login';
+import SignUp from '../../components/signup/SignUp';
 import './auth.css';
-import blob from "../assets/images/blob1.svg";
+import blob from "../../assets/images/blob1.svg";
 
 const Auth = () => {
     const [requestCreateAccount, setRequestCreateAccount] = useState();

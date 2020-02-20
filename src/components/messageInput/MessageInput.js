@@ -1,6 +1,6 @@
 import React from "react";
-import store from "../store/store";
-import { setTypingValue, sendMessage, editedMessage } from "../actions/action";
+import store from "../../store/store";
+import { setTypingValue, sendMessage, editedMessage } from "../../actions/action";
 
 import "./MessageInput.css";
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import './Main.css'
-import Empty from './Empty'
-import ChatWindow from './ChatWindow'
+import Empty from '../empty/Empty'
+import ChatWindow from '../chatWindow/ChatWindow'
 
 const Main = ({ user, activeUserId, currentUser }) => {
 	//the two props passed into the main component from App.js are above
