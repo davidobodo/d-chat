@@ -58,6 +58,7 @@ svg{
     padding: 5px 15px;
     margin-left: 15px;
     cursor: pointer;
+    outline: none;
 }
 
 .scale-up{
@@ -76,5 +77,9 @@ svg{
     z-index: -1;
     top: 0;
     right: 131px;
+}
+
+.signup-wrapper ::placeholder{
+    opacity: 0.3;
 }
 

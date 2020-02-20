@@ -82,6 +82,7 @@ svg{
         padding: 5px 15px;
         margin-left: 15px;
         cursor: pointer;
+        outline: none;
 }
 
 .login-wrapper h5{
@@ -98,3 +99,7 @@ svg{
 .scale-down{
         transform: scale(0.8) !important;
 }
+
+.login-wrapper ::placeholder{
+        opacity: 0.3;
+    }
