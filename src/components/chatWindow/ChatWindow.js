@@ -9,11 +9,11 @@ import MessageInput from '../messageInput/MessageInput';
 import { firestoreConnect } from 'react-redux-firebase';
 
 const ChatWindow = ({ activeUserId }) => {
-	const allUsers = useSelector(state => state.firestore.ordered.users)
-
+	const allUsers = useSelector(state => state.firestore.ordered.users, shallowEqual)
+	const allMessages = useSelector(state => state.messages, shallowEqual)
 	const activeChat = allUsers.filter(user => user.id === activeUserId);
 
-	const activeUser = store.getState().contacts[activeUserId];
+	// const activeUser = store.getState().contacts[activeUserId];
 
 	const activeMsgs = store.getState().messages[activeUserId];
 
@@ -23,7 +23,7 @@ const ChatWindow = ({ activeUserId }) => {
 		//use lodash to convert the activemsgs from object to array. this is mainly because we want each of them to have a specific index(which an array gives to all its values)
 		<div className="ChatWindow">
 			<Header activeChat={activeChat} activeUserId={activeUserId} />
-			<Chats messages={_.values(activeMsgs)} />
+			<Chats messages={Object.values(allMessages)} />
 			<MessageInput value={typing} />
 		</div>
 	);

@@ -78,7 +78,6 @@ class Chats extends Component {
 	render() {
 		const details = store.getState().details;
 		const { number, text } = details
-
 		return (
 			//pass in this.chatRef into entire div to enable automatic scrolling of cha component
 			//chats has received messages as a prop from its parent component, but we want each to be rendered separately so we map
@@ -90,11 +89,13 @@ class Chats extends Component {
 					show={this.state.editDel}
 					edit={() => { this.handleEdit(number, text) }}
 					delete={() => { this.handleDelete(number) }} />
-				{this.props.messages.map(message => (
-					<Chat
+				{this.props.messages.map(mes => {
+					const { id, message, receiverId, senderId } = mes
+					return <Chat
 						message={message}
-						key={message.number}
-						clicked={(e) => { this.myFunction(message.number, message.text, message.is_user_msg) }} />))}
+						key={id}
+						clicked={(e) => { this.myFunction(message.number, message.text, message.is_user_msg) }} />
+				})}
 			</div>
 		)
 	}

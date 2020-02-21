@@ -32,10 +32,11 @@ export const setTypingValue = (value) => {
 }
 
 export const sendMessage = (message) => {
-	console.log(message, "action")
 	return {
 		type: SEND_MESSAGE,
-		message
+		payload: {
+			message,
+		}
 	}
 }
 

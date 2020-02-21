@@ -14,7 +14,6 @@ const MessageInput = ({ value }) => {
 	const handleOnSubmit = (e) => {
 		e.preventDefault();
 
-		console.log(message)
 		dispatch(sendMessage(message))
 		// const { typing, activeUserId, selectedMessage } = state;
 
