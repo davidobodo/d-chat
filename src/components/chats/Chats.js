@@ -10,7 +10,6 @@ import { deleteMessage } from '../../actions/action'
 
 const Chats = ({ messages, userId, activeChatUserId }) => {
 	const [editDel, setEditDel] = useState(false)
-	console.log(userId, activeChatUserId)
 	return (
 		<div
 			className="Chats"

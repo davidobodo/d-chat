@@ -9,12 +9,14 @@ const Chat = ({ message, clicked, senderId, userId }) => {
         is_user_msg = false;
     }
 
+    // className={`Chat ${is_user_msg ? "is-user-msg" : ""}`}
+
     return (
-        <span
-            className={`Chat ${is_user_msg ? "is-user-msg" : ""}`}
-            onClick={clicked}
-        >
-            {message}
+        <span className={`Chat__wrapper ${is_user_msg ? "is-user-msg" : ""}`} onClick={clicked}>
+            <span className={`Chat__message ${is_user_msg ? "is-user-msg" : ""}`} >
+                {message}
+            </span>
+            <span className="Chat__time">20:22pm</span>
         </span>
     )
 };
