@@ -1,4 +1,4 @@
-import { SEND_MESSAGE_START } from "../constants/action-types";
+import { SEND_MESSAGE_START, SEND_MESSAGE_SUCCESS, SEND_MESSAGE_FAIL } from "../constants/action-types";
 import { DELETE_MESSAGE } from "../constants/action-types";
 import { EDITED_MESSAGE } from "../constants/action-types";
 import _ from 'lodash'
@@ -49,12 +49,17 @@ const messages = (state = initialState, action) => {
 					receiverId
 				}
 			};
+		case SEND_MESSAGE_SUCCESS:
+			return {
+				...state
+			};
+		case SEND_MESSAGE_FAIL:
+			return {
+				...state
+			}
 		case DELETE_MESSAGE:
-
-			//take it the message number and activeuserid
 			messageId = action.payload.number;
 			const activeUserId = action.payload.activeUserId;
-			//run the omit lodash method on the state using the particulat activeuserid and number of message as parameters
 			return {
 				...state,
 				[activeUserId]: _.omit(state[activeUserId], messageId)

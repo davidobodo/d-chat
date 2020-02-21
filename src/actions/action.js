@@ -3,6 +3,8 @@ import {
 	UNSET_RECEIVER_ID,
 	SET_TYPING_VALUE,
 	SEND_MESSAGE_START,
+	SEND_MESSAGE_SUCCESS,
+	SEND_MESSAGE_FAIL,
 	DELETE_MESSAGE,
 	EDIT_MESSAGE,
 	EDITED_MESSAGE,
@@ -40,6 +42,20 @@ export const sendMessageStart = (message, messageId, userId, receiverId) => {
 			userId,
 			receiverId
 		}
+	}
+}
+
+export const sendMessageSuccess = (payload) => {
+	return {
+		type: SEND_MESSAGE_SUCCESS,
+		payload
+	}
+}
+
+export const sendMessageFail = (error) => {
+	return {
+		type: SEND_MESSAGE_FAIL,
+		error
 	}
 }
 

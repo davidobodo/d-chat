@@ -1,6 +1,7 @@
 import { takeEvery, put, all, call } from "redux-saga/effects";
 import { SEND_MESSAGE_START } from "../constants/action-types";
 import { rsf } from "../index";
+import { sendMessageSuccess, sendMessageFail } from "../actions/action";
 
 
 function* handleSendMessage({ payload }) {
@@ -18,7 +19,7 @@ function* handleSendMessage({ payload }) {
         )
         console.log(doc, "success")
     } catch (err) {
-        console.log(err, "fail")
+        yield put(sendMessageFail(err.message))
     }
 }
 
