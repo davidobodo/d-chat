@@ -19,10 +19,11 @@ const Home = () => {
         return <Redirect to="/auth" />
     }
 
-    const currentUser = firebase.profile;
+    const user = firebase.profile;
+    const userId = firebase.auth.uid;
     //----------------------------------------------------------
     // previous dummy contact details:
-    const { contacts, user } = store.getState();
+    const { contacts, userFake } = store.getState();
     //----------------------------------------------------------
 
 
@@ -30,9 +31,10 @@ const Home = () => {
         <div className="home">
             <Sidebar contacts={allUsers} />
             <Main
-                user={user}
+                userFake={userFake}
                 receiverId={receiverId}
-                currentUser={currentUser} />
+                user={user}
+                userId={userId} />
         </div>
     );
 }

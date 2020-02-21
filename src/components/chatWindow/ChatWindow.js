@@ -8,7 +8,7 @@ import './ChatWindow.css'
 import MessageInput from '../messageInput/MessageInput';
 import { firestoreConnect } from 'react-redux-firebase';
 
-const ChatWindow = ({ receiverId }) => {
+const ChatWindow = ({ receiverId, userId }) => {
 	const allUsers = useSelector(state => state.firestore.ordered.users, shallowEqual)
 	const activeChat = allUsers.filter(user => user.id === receiverId);
 
@@ -21,7 +21,7 @@ const ChatWindow = ({ receiverId }) => {
 		<div className="ChatWindow">
 			<Header activeChat={activeChat} receiverId={receiverId} />
 			<Chats messages={Object.values(allMessages)} />
-			<MessageInput value={typing} receiverId={receiverId} />
+			<MessageInput value={typing} receiverId={receiverId} userId={userId} />
 		</div>
 	);
 };

@@ -4,7 +4,7 @@ import "./MessageInput.css";
 import { sendMessage } from "../../actions/action";
 import uuidv4 from 'uuid';
 
-const MessageInput = ({ value, receiverId }) => {
+const MessageInput = ({ value, receiverId, userId }) => {
 	const [message, setMessage] = useState();
 	const dispatch = useDispatch();
 
@@ -15,7 +15,7 @@ const MessageInput = ({ value, receiverId }) => {
 	const handleOnSubmit = (e) => {
 		e.preventDefault();
 		const messageId = uuidv4();
-		dispatch(sendMessage(message, messageId, receiverId))
+		dispatch(sendMessage(message, messageId, userId, receiverId))
 		// const { typing, activeUserId, selectedMessage } = state;
 
 		// if (selectedMessage !== null) {

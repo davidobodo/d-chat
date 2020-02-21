@@ -4,7 +4,7 @@ import "./Empty.css";
 import { signOutStart } from '../../actions/authActions';
 
 
-const Empty = ({ user, currentUser }) => {
+const Empty = ({ userFake, user }) => {
 	const dispatch = useDispatch();
 
 	const handleUserSignOut = () => {
@@ -13,10 +13,10 @@ const Empty = ({ user, currentUser }) => {
 
 	//The prop sent into this component is from Main.js
 	//Like i said befor,User is just the main person chatting with the rest of the individuals
-	//Take out all user props using destructuring
-	const { name, profile_pic, status } = user;
+	//Take out all userFake props using destructuring
+	const { name, profile_pic, status } = userFake;
 
-	const { firstName, lastName } = currentUser;
+	const { firstName, lastName } = user;
 
 	return (
 		<div className="Empty">

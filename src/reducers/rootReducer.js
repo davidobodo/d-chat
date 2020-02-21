@@ -1,4 +1,4 @@
-import user from './user'
+import userFake from './user'
 import contacts from './contacts'
 import typing from './typing'
 import messages from './messages'
@@ -11,7 +11,7 @@ import { firestoreReducer } from 'redux-firestore';
 import authReducer from './authReducers';
 
 export default combineReducers({
-	user,
+	userFake,
 	contacts,
 	messages,
 	typing,
