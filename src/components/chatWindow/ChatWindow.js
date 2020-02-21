@@ -25,7 +25,8 @@ const ChatWindow = ({ receiverId, userId }) => {
 		<div className="ChatWindow">
 			<Header activeChat={activeChat} receiverId={receiverId} />
 			<Chats
-				messages={firestoreMessages} />
+				messages={firestoreMessages}
+				userId={userId} />
 			<MessageInput value={typing} receiverId={receiverId} userId={userId} />
 		</div>
 	);

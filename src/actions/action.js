@@ -33,13 +33,13 @@ export const setTypingValue = (value) => {
 	}
 }
 
-export const sendMessageStart = (message, messageId, userId, receiverId) => {
+export const sendMessageStart = (message, messageId, senderId, receiverId) => {
 	return {
 		type: SEND_MESSAGE_START,
 		payload: {
 			message,
 			messageId,
-			userId,
+			senderId,
 			receiverId
 		}
 	}

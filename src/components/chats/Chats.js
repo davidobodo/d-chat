@@ -8,9 +8,8 @@ import { editMessage } from '../../actions/action'
 import { deleteMessage } from '../../actions/action'
 
 
-const Chats = ({ messages }) => {
+const Chats = ({ messages, userId }) => {
 	const [editDel, setEditDel] = useState(false)
-	console.log(messages)
 	return (
 		<div
 			className="Chats"
@@ -21,6 +20,8 @@ const Chats = ({ messages }) => {
 				return <Chat
 					message={message}
 					key={id}
+					senderId={senderId}
+					userId={userId}
 					clicked={(e) => { this.myFunction(message.number, message.text, message.is_user_msg) }} />
 			})}
 		</div>
