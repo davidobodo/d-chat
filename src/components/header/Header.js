@@ -6,7 +6,8 @@ import { unsetActiveUser } from '../../actions/action'
 
 //take in props that were sent from parentelement using destructuring since we want to give them same variable names
 const Header = ({ activeChat, activeUserId }) => {
-	const { firstName, lastName } = activeChat
+	console.log(activeChat)
+	const { firstName, lastName } = activeChat[0];
 	return (
 
 		//on clicking button dispatch action to set user id back to null so that we can go back to home page
