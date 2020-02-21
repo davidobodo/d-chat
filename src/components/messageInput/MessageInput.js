@@ -16,6 +16,7 @@ const MessageInput = ({ value, receiverId, userId }) => {
 		e.preventDefault();
 		const messageId = uuidv4();
 		dispatch(sendMessage(message, messageId, userId, receiverId))
+		setMessage('')
 		// const { typing, activeUserId, selectedMessage } = state;
 
 		// if (selectedMessage !== null) {
@@ -30,6 +31,7 @@ const MessageInput = ({ value, receiverId, userId }) => {
 			<input
 				className="Message__input"
 				onChange={handleOnChange}
+				value={message}
 				placeholder="write a message"
 			/>
 		</form>
