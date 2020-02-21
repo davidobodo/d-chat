@@ -10,9 +10,9 @@ const MessageInput = ({ value }) => {
 	const dispatch = useDispatch();
 
 	const handleOnChange = (e) => {
-		console.log("hello")
-		setMessage(e.target.value)
-		console.log(message)
+		console.log("hello there")
+		// setMessage(e.target.value)
+		// console.log(message)
 	};
 
 	const handleSubmit = (e) => {
@@ -33,7 +33,7 @@ const MessageInput = ({ value }) => {
 		<form className="Message" onSubmit={handleSubmit}>
 			<input
 				className="Message__input"
-				onChange={(e) => console.log("hello")}
+				onChange={handleOnChange}
 				placeholder="write a message"
 			/>
 		</form>
