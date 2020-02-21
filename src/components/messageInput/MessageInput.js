@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import "./MessageInput.css";
-import { sendMessage } from "../../actions/action";
+import { sendMessageStart } from "../../actions/action";
 import uuidv4 from 'uuid';
 
 const MessageInput = ({ value, receiverId, userId }) => {
@@ -15,14 +15,14 @@ const MessageInput = ({ value, receiverId, userId }) => {
 	const handleOnSubmit = (e) => {
 		e.preventDefault();
 		const messageId = uuidv4();
-		dispatch(sendMessage(message, messageId, userId, receiverId))
-		setMessage('')
+		dispatch(sendMessageStart(message, messageId, userId, receiverId))
+		// setMessage('')
 		// const { typing, activeUserId, selectedMessage } = state;
 
 		// if (selectedMessage !== null) {
 		// 	store.dispatch(editedMessage(typing, activeUserId, selectedMessage))
 		// } else (
-		// 	store.dispatch(sendMessage(typing, activeUserId))
+		// 	store.dispatch(sendMessageStart(typing, activeUserId))
 		// )
 	};
 
@@ -31,7 +31,7 @@ const MessageInput = ({ value, receiverId, userId }) => {
 			<input
 				className="Message__input"
 				onChange={handleOnChange}
-				value={message}
+				// value={message}
 				placeholder="write a message"
 			/>
 		</form>

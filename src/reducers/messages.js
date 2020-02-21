@@ -1,4 +1,4 @@
-import { SEND_MESSAGE } from "../constants/action-types";
+import { SEND_MESSAGE_START } from "../constants/action-types";
 import { DELETE_MESSAGE } from "../constants/action-types";
 import { EDITED_MESSAGE } from "../constants/action-types";
 import _ from 'lodash'
@@ -38,7 +38,7 @@ const initialState = {
 
 const messages = (state = initialState, action) => {
 	switch (action.type) {
-		case SEND_MESSAGE:
+		case SEND_MESSAGE_START:
 			let { message, messageId, userId, receiverId } = action.payload;
 			return {
 				...state,

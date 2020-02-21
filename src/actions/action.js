@@ -2,7 +2,7 @@ import {
 	SET_RECEIVER_ID,
 	UNSET_RECEIVER_ID,
 	SET_TYPING_VALUE,
-	SEND_MESSAGE,
+	SEND_MESSAGE_START,
 	DELETE_MESSAGE,
 	EDIT_MESSAGE,
 	EDITED_MESSAGE,
@@ -31,9 +31,9 @@ export const setTypingValue = (value) => {
 	}
 }
 
-export const sendMessage = (message, messageId, userId, receiverId) => {
+export const sendMessageStart = (message, messageId, userId, receiverId) => {
 	return {
-		type: SEND_MESSAGE,
+		type: SEND_MESSAGE_START,
 		payload: {
 			message,
 			messageId,

@@ -1,6 +1,6 @@
 import {
 	SET_TYPING_VALUE,
-	SEND_MESSAGE,
+	SEND_MESSAGE_START,
 	EDIT_MESSAGE,
 	EDITED_MESSAGE
 
@@ -12,7 +12,7 @@ const typing = (state = "", action) => {
 		case SET_TYPING_VALUE:
 			//change that empty string to the payload that is being sent in
 			return action.payload;
-		case SEND_MESSAGE:
+		case SEND_MESSAGE_START:
 			return "";
 		case EDIT_MESSAGE:
 			//assign text payload to a constant
