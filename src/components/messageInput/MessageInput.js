@@ -6,7 +6,6 @@ import { setTypingValue, sendMessage, editedMessage } from "../../actions/action
 import "./MessageInput.css";
 
 const MessageInput = ({ value }) => {
-	console.log("message input")
 	const [message, setMessage] = useState();
 	const dispatch = useDispatch();
 
