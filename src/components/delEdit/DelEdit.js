@@ -1,5 +1,5 @@
 import React from 'react'
-import './DelEdit.css'
+// import './DelEdit.css'
 import { store } from '../../store/store'
 
 
