@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import './Chats.css'
 import store from '../../store/store'
 import { details } from '../../actions/action'
@@ -7,98 +7,121 @@ import Chat from '../chat/Chat'
 import { editMessage } from '../../actions/action'
 import { deleteMessage } from '../../actions/action'
 
-class Chats extends Component {
+
+const Chats = ({ messages }) => {
+	const [editDel, setEditDel] = useState(false)
+	return (
+		<div
+			className="Chats"
+		// ref={this.chatsRef}
+		>
+			{messages.map(mes => {
+				const { messageId, message, receiverId, senderId } = mes
+				console.log(mes)
+				return <Chat
+					message={message}
+					key={messageId}
+					clicked={(e) => { this.myFunction(message.number, message.text, message.is_user_msg) }} />
+			})}
+		</div>
+	)
+};
+
+export default Chats;
+// class Chats extends Component {
 	//this code is to make sure the chat scrolls to the bottom when there is a submission of any message
 	//starts here...
-	constructor(props) {
-		super(props);
-		this.chatsRef = React.createRef();
-	}
+	// constructor(props) {
+	// 	super(props);
+	// 	this.chatsRef = React.createRef();
+	// }
 
-	componentDidMount() {
-		this.scrollToBottom();
-	}
+	// componentDidMount() {
+	// 	this.scrollToBottom();
+	// }
 
-	componentDidUpdate() {
-		this.scrollToBottom();
-	}
+	// componentDidUpdate() {
+	// 	this.scrollToBottom();
+	// }
 
-	scrollToBottom = () => {
-		this.chatsRef.current.scrollTop =
-			this.chatsRef.current.scrollHeight;
-	};
+	// scrollToBottom = () => {
+	// 	this.chatsRef.current.scrollTop =
+	// 		this.chatsRef.current.scrollHeight;
+	// };
 	//ends here
 
-	state = {
-		editDel: false
-	}
+	// state = {
+	// 	editDel: false
+	// }
 
-	showEditDeleteBox = () => {
-		this.setState({ editDel: true })
+	// showEditDeleteBox = () => {
+	// 	this.setState({ editDel: true })
 
-	}
+	// }
 
-	removeEditDeleteBox = () => {
-		this.setState({ editDel: false })
-	}
+	// removeEditDeleteBox = () => {
+	// 	this.setState({ editDel: false })
+	// }
 
 	//this is the function that gets run due to clicking any of the span tags
-	myFunction = (number, text, is_user_msg) => {
-		this.showEditDeleteBox();
-		//examine is_user_msg
-		//if its true diaplay a new component, by changing its display style property from none to flex
-		if (is_user_msg === true) {
-			//get activeuserId from store i.e the user whose chats are currently displayed
-			const activeUserId = store.getState().activeUserId;
+	// myFunction = (number, text, is_user_msg) => {
+	// 	this.showEditDeleteBox();
+	// 	//examine is_user_msg
+	// 	//if its true diaplay a new component, by changing its display style property from none to flex
+	// 	if (is_user_msg === true) {
+	// 		//get activeuserId from store i.e the user whose chats are currently displayed
+	// 		const activeUserId = store.getState().activeUserId;
 
-			// dispatch this action , passing in the properties of the particular message that was clicked and the activeUserId
-			store.dispatch(details(number, text, is_user_msg, activeUserId))
-		}
-		else {
-			return null
-		}
-	}
+	// 		// dispatch this action , passing in the properties of the particular message that was clicked and the activeUserId
+	// 		store.dispatch(details(number, text, is_user_msg, activeUserId))
+	// 	}
+	// 	else {
+	// 		return null
+	// 	}
+	// }
 
 	//These are the functions receiving the number and text
-	handleEdit = (number, text) => {
-		this.removeEditDeleteBox();
-		//we need the owner of this particular chat so we dont use the number and text in just any conversation
-		const { activeUserId } = store.getState().details;
-		store.dispatch(editMessage(number, text, activeUserId))
-	}
+	// handleEdit = (number, text) => {
+	// 	this.removeEditDeleteBox();
+	// 	//we need the owner of this particular chat so we dont use the number and text in just any conversation
+	// 	const { activeUserId } = store.getState().details;
+	// 	store.dispatch(editMessage(number, text, activeUserId))
+	// }
 
-	handleDelete = (number) => {
-		this.removeEditDeleteBox();
-		const { activeUserId } = store.getState().details;
-		store.dispatch(deleteMessage(number, activeUserId))
+	// handleDelete = (number) => {
+	// 	this.removeEditDeleteBox();
+	// 	const { activeUserId } = store.getState().details;
+	// 	store.dispatch(deleteMessage(number, activeUserId))
 
-	}
+	// }
 
 
-	render() {
-		const details = store.getState().details;
-		const { number, text } = details
-		return (
-			//pass in this.chatRef into entire div to enable automatic scrolling of cha component
-			//chats has received messages as a prop from its parent component, but we want each to be rendered separately so we map
-			//we use the message number property as key(means of react identifying each component individually)
-			//we pass each message into a new component called Chat(i.e individual chat) so it can be rendered seperately
+	// render() {
+	// 	const details = store.getState().details;
+	// 	const { number, text } = details
+	// 	return (
+	// 		//pass in this.chatRef into entire div to enable automatic scrolling of cha component
+	// 		//chats has received messages as a prop from its parent component, but we want each to be rendered separately so we map
+	// 		//we use the message number property as key(means of react identifying each component individually)
+	// 		//we pass each message into a new component called Chat(i.e individual chat) so it can be rendered seperately
 
-			<div className="Chats" ref={this.chatsRef}>
-				<DelEdit
-					show={this.state.editDel}
-					edit={() => { this.handleEdit(number, text) }}
-					delete={() => { this.handleDelete(number) }} />
-				{this.props.messages.map(mes => {
-					const { id, message, receiverId, senderId } = mes
-					return <Chat
-						message={message}
-						key={id}
-						clicked={(e) => { this.myFunction(message.number, message.text, message.is_user_msg) }} />
-				})}
-			</div>
-		)
-	}
-}
+	// 		// <div className="Chats" ref={this.chatsRef}>
+	// 		// 	<DelEdit
+	// 		// 		show={this.state.editDel}
+	// 		// 		edit={() => { this.handleEdit(number, text) }}
+	// 		// 		delete={() => { this.handleDelete(number) }} />
+	// 		// 	{this.props.messages.map(mes => {
+	// 		// 		const { messageId, message, receiverId, senderId } = mes
+	// 		// 		console.log(mes)
+	// 		// 		return <Chat
+	// 		// 			message={message}
+	// 		// 			key={messageId}
+	// 		// 			clicked={(e) => { this.myFunction(message.number, message.text, message.is_user_msg) }} />
+	// 		// 	})}
+	// 		// </div>
+	// 	)
+// 	}
+// }
 
-export default Chats
+
+

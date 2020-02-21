@@ -4,40 +4,34 @@ import { EDITED_MESSAGE } from "../constants/action-types";
 import _ from 'lodash'
 
 const initialState = {
-	// id : {
-	// 	id:,
-	// 	message:,
-	//	senderId: ,
-	//	receiverId: ,
-	// }
 	1: {
-		id: 1,
+		messageId: 1,
 		message: 'hello there',
-		senderId: 1111,
+		userId: 1111,
 		receiverId: 2222,
 	},
 	2: {
-		id: 2,
+		messageId: 2,
 		message: 'hey',
-		senderId: 1111,
+		userId: 1111,
 		receiverId: 2222,
 	},
 	3: {
-		id: 3,
+		messageId: 3,
 		message: 'hi man',
-		senderId: 2222,
+		userId: 2222,
 		receiverId: 1111,
 	},
 	4: {
-		id: 4,
+		messageId: 4,
 		message: 'so whats up',
-		senderId: 2222,
+		userId: 2222,
 		receiverId: 1111,
 	},
 	5: {
-		id: 5,
+		messageId: 5,
 		message: `i'm doing good`,
-		senderId: 1111,
+		userId: 1111,
 		receiverId: 2222,
 	},
 }
@@ -45,18 +39,15 @@ const initialState = {
 const messages = (state = initialState, action) => {
 	switch (action.type) {
 		case SEND_MESSAGE:
-			let { message, messageId } = action.payload;
-			// const number = +_.keys(allUserMsgs).pop() + 1;
+			let { message, messageId, userId, receiverId } = action.payload;
 			return {
 				...state,
-				// [userId]: {
-				// 	...allUserMsgs,
-				// 	[number]: {
-				// 		number,
-				// 		text: message,
-				// 		is_user_msg: true
-				// 	}
-				// }
+				[messageId]: {
+					messageId,
+					message,
+					userId,
+					receiverId
+				}
 			};
 		case DELETE_MESSAGE:
 
