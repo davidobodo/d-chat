@@ -1,24 +1,21 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import store from "../../store/store";
-import { setTypingValue, sendMessage, editedMessage } from "../../actions/action";
-
 import "./MessageInput.css";
+import { sendMessage } from "../../actions/action";
 
 const MessageInput = ({ value }) => {
 	const [message, setMessage] = useState();
 	const dispatch = useDispatch();
 
 	const handleOnChange = (e) => {
-		console.log("hello there")
-		// setMessage(e.target.value)
-		// console.log(message)
+		setMessage(e.target.value)
 	};
 
-	const handleSubmit = (e) => {
+	const handleOnSubmit = (e) => {
 		e.preventDefault();
-		console.log("HELLO")
-		// dispatch(sendMessage())
+
+		console.log(message)
+		dispatch(sendMessage(message))
 		// const { typing, activeUserId, selectedMessage } = state;
 
 		// if (selectedMessage !== null) {
@@ -28,9 +25,8 @@ const MessageInput = ({ value }) => {
 		// )
 	};
 
-	console.log(message);
 	return (
-		<form className="Message" onSubmit={handleSubmit}>
+		<form className="Message" onSubmit={handleOnSubmit}>
 			<input
 				className="Message__input"
 				onChange={handleOnChange}

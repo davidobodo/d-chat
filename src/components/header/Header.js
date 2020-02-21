@@ -6,7 +6,6 @@ import { unsetActiveUser } from '../../actions/action'
 
 //take in props that were sent from parentelement using destructuring since we want to give them same variable names
 const Header = ({ activeChat, activeUserId }) => {
-	console.log(activeChat)
 	const { firstName, lastName } = activeChat[0];
 	return (
 

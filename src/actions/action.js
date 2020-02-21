@@ -31,13 +31,11 @@ export const setTypingValue = (value) => {
 	}
 }
 
-export const sendMessage = (message, userId) => {
+export const sendMessage = (message) => {
+	console.log(message, "action")
 	return {
 		type: SEND_MESSAGE,
-		payload: {
-			message,
-			userId
-		}
+		message
 	}
 }
 
