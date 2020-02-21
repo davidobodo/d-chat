@@ -17,7 +17,6 @@ const Chats = ({ messages }) => {
 		>
 			{messages.map(mes => {
 				const { messageId, message, receiverId, senderId } = mes
-				console.log(mes)
 				return <Chat
 					message={message}
 					key={messageId}

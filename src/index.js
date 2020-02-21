@@ -3,15 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css'
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
 import { Provider } from 'react-redux';
 import store from './store/store';
-
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
 import { createFirestoreInstance } from 'redux-firestore';
+
+import ReduxSagaFirebase from 'redux-saga-firebase';
 
 const fbConfig = {
     apiKey: "AIzaSyAwuajOuBV1dZQOnDUVziiQwjwhBCfXndc",
@@ -24,7 +24,7 @@ const fbConfig = {
     measurementId: "G-TH6YGMVDT4"
 };
 
-firebase.initializeApp(fbConfig);
+const firebaseApp = firebase.initializeApp(fbConfig);
 
 
 const rrfConfig = {
@@ -32,7 +32,7 @@ const rrfConfig = {
     useFirestoreForProfile: true,
 };
 
-
+export const rsf = new ReduxSagaFirebase(firebaseApp)
 export var firestore = firebase.firestore();
 
 const rrfProps = {
