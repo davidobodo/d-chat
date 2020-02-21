@@ -25,10 +25,14 @@ const ChatWindow = ({ receiverId, userId }) => {
 		<div className="ChatWindow">
 			<Header activeChat={activeChat} receiverId={receiverId} />
 			<Chats
-				messages={Object.values(allMessages)}
-				messages2={firestoreMessages} />
+				messages={firestoreMessages} />
 			<MessageInput value={typing} receiverId={receiverId} userId={userId} />
 		</div>
 	);
 };
-export default firestoreConnect(() => ['users', 'messages'])(ChatWindow);
+// export default firestoreConnect(() => ['users', 'messages'])(ChatWindow);
+
+export default firestoreConnect([
+	{ collection: 'users' },
+	{ collection: 'messages', orderBy: ['time', 'asc'] }
+])(ChatWindow);

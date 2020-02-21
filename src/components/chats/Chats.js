@@ -8,19 +8,19 @@ import { editMessage } from '../../actions/action'
 import { deleteMessage } from '../../actions/action'
 
 
-const Chats = ({ messages, messages2 }) => {
+const Chats = ({ messages }) => {
 	const [editDel, setEditDel] = useState(false)
-	console.log(messages2, "chats component")
+	console.log(messages)
 	return (
 		<div
 			className="Chats"
 		// ref={this.chatsRef}
 		>
-			{messages2 && messages2.map(mes => {
-				const { messageId, message, receiverId, senderId } = mes
+			{messages && messages.map(mes => {
+				const { messageId, message, receiverId, senderId, id } = mes
 				return <Chat
 					message={message}
-					key={messageId}
+					key={id}
 					clicked={(e) => { this.myFunction(message.number, message.text, message.is_user_msg) }} />
 			})}
 		</div>

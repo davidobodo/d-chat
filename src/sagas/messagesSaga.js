@@ -14,7 +14,8 @@ function* handleSendMessage({ payload }) {
                 message,
                 messageId,
                 receiverId,
-                userId
+                userId,
+                time: new Date()
             }
         )
         console.log(doc, "success")
