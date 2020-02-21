@@ -1,6 +1,6 @@
 import {
-	SET_ACTIVE_USER_ID,
-	UNSET_ACTIVE_USER,
+	SET_RECEIVER_ID,
+	UNSET_RECEIVER_ID,
 	SET_TYPING_VALUE,
 	SEND_MESSAGE,
 	DELETE_MESSAGE,
@@ -10,16 +10,16 @@ import {
 
 } from '../constants/action-types'
 
-export const setActiveUserId = (id) => {
+export const setReceiverId = (id) => {
 	return {
-		type: SET_ACTIVE_USER_ID,
+		type: SET_RECEIVER_ID,
 		id
 	}
 }
 
 export const unsetActiveUser = (activeUserId) => {
 	return {
-		type: UNSET_ACTIVE_USER,
+		type: UNSET_RECEIVER_ID,
 		payload: activeUserId
 	}
 }
@@ -31,11 +31,15 @@ export const setTypingValue = (value) => {
 	}
 }
 
-export const sendMessage = (message) => {
+export const sendMessage = (message, messageId, receiverId) => {
+	console.log(message, messageId, receiverId, 'actions')
 	return {
 		type: SEND_MESSAGE,
 		payload: {
 			message,
+			messageId,
+			receiverId,
+
 		}
 	}
 }

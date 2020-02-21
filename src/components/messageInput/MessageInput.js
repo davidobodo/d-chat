@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import "./MessageInput.css";
 import { sendMessage } from "../../actions/action";
+import uuidv4 from 'uuid';
 
-const MessageInput = ({ value }) => {
+const MessageInput = ({ value, receiverId }) => {
 	const [message, setMessage] = useState();
 	const dispatch = useDispatch();
 
@@ -13,8 +14,8 @@ const MessageInput = ({ value }) => {
 
 	const handleOnSubmit = (e) => {
 		e.preventDefault();
-
-		dispatch(sendMessage(message))
+		const messageId = uuidv4();
+		dispatch(sendMessage(message, messageId, receiverId))
 		// const { typing, activeUserId, selectedMessage } = state;
 
 		// if (selectedMessage !== null) {

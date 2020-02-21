@@ -45,7 +45,7 @@ const initialState = {
 const messages = (state = initialState, action) => {
 	switch (action.type) {
 		case SEND_MESSAGE:
-			const { message } = action.payload;
+			let { message, messageId } = action.payload;
 			// const number = +_.keys(allUserMsgs).pop() + 1;
 			return {
 				...state,
@@ -61,7 +61,7 @@ const messages = (state = initialState, action) => {
 		case DELETE_MESSAGE:
 
 			//take it the message number and activeuserid
-			const messageId = action.payload.number;
+			messageId = action.payload.number;
 			const activeUserId = action.payload.activeUserId;
 			//run the omit lodash method on the state using the particulat activeuserid and number of message as parameters
 			return {

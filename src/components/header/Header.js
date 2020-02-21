@@ -5,7 +5,7 @@ import { unsetActiveUser } from '../../actions/action'
 
 
 //take in props that were sent from parentelement using destructuring since we want to give them same variable names
-const Header = ({ activeChat, activeUserId }) => {
+const Header = ({ activeChat, receiverId }) => {
 	const { firstName, lastName } = activeChat[0];
 	return (
 
@@ -13,7 +13,7 @@ const Header = ({ activeChat, activeUserId }) => {
 		//Pass in the credentials for display in the header
 		//remember bind is the syntax for passing parameters into the click function and null must always be its initial parameter
 		<header className="Header">
-			<button className="Header__button" onClick={handleClick.bind(null, activeUserId)}>
+			<button className="Header__button" onClick={handleClick.bind(null, receiverId)}>
 				Back
 			</button>
 			<h1 className="Header__name">{firstName} {lastName}</h1>
@@ -22,9 +22,9 @@ const Header = ({ activeChat, activeUserId }) => {
 	)
 }
 
-const handleClick = (activeUserId) => {
+const handleClick = (receiverId) => {
 	//this goes to the actions directory
-	store.dispatch(unsetActiveUser(activeUserId))
+	store.dispatch(unsetActiveUser(receiverId))
 }
 
 export default Header

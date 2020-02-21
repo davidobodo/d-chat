@@ -9,12 +9,10 @@ import store from '../../store/store';
 import { firestoreConnect } from 'react-redux-firebase';
 
 const Home = () => {
-    const {
-        firebase,
-        allUsers
-    } = useSelector(state => ({
+    const { firebase, allUsers, receiverId } = useSelector(state => ({
         firebase: state.firebase,
         allUsers: state.firestore.ordered.users,
+        receiverId: state.receiverId
     }), shallowEqual);
 
     if (!firebase.auth.uid) {
@@ -22,21 +20,18 @@ const Home = () => {
     }
 
     const currentUser = firebase.profile;
-
     //----------------------------------------------------------
     // previous dummy contact details:
-    const { contacts, user, activeUserId } = store.getState();
+    const { contacts, user } = store.getState();
     //----------------------------------------------------------
-
 
 
     return (
-        //use lodash to convert contacts from objects to array
         <div className="home">
             <Sidebar contacts={allUsers} />
             <Main
                 user={user}
-                activeUserId={activeUserId}
+                receiverId={receiverId}
                 currentUser={currentUser} />
         </div>
     );

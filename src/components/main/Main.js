@@ -3,18 +3,18 @@ import './Main.css';
 import Empty from '../empty/Empty';
 import ChatWindow from '../chatWindow/ChatWindow';
 
-const Main = ({ user, activeUserId, currentUser }) => {
+const Main = ({ user, receiverId, currentUser }) => {
 
 	const renderMainContent = () => {
-		if (!activeUserId) {
+		if (!receiverId) {
 			return <Empty
 				user={user}
-				activeUserId={activeUserId}
+				receiverId={receiverId}
 				currentUser={currentUser} />;
 		} else {
-			return <ChatWindow activeUserId={activeUserId} />;
+			return <ChatWindow receiverId={receiverId} />;
 		}
-	};
+	}
 
 	return (
 		<main className="Main">
