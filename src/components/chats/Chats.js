@@ -18,12 +18,13 @@ const Chats = ({ messages, userId, activeChatUserId }) => {
 			{messages && messages.filter(mes => {
 				return (mes.senderId == userId || mes.senderId == activeChatUserId) && (mes.receiverId == userId || mes.receiverId == activeChatUserId)
 			}).map(mes => {
-				const { messageId, message, receiverId, senderId, id } = mes
+				const { messageId, message, receiverId, senderId, id, time } = mes
 				return <Chat
 					message={message}
 					key={id}
 					senderId={senderId}
 					userId={userId}
+					time={time}
 					clicked={(e) => { this.myFunction(message.number, message.text, message.is_user_msg) }} />
 			})}
 		</div>

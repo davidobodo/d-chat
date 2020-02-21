@@ -1,6 +1,8 @@
 import React from 'react';
+import moment from 'moment';
 
-const Chat = ({ message, clicked, senderId, userId }) => {
+const Chat = ({ message, clicked, senderId, userId, time }) => {
+    console.log(time)
     let is_user_msg;
 
     if (senderId == userId) {
