@@ -8,14 +8,17 @@ import { editMessage } from '../../actions/action'
 import { deleteMessage } from '../../actions/action'
 
 
-const Chats = ({ messages, userId }) => {
+const Chats = ({ messages, userId, activeChatUserId }) => {
 	const [editDel, setEditDel] = useState(false)
+	console.log(userId, activeChatUserId)
 	return (
 		<div
 			className="Chats"
 		// ref={this.chatsRef}
 		>
-			{messages && messages.map(mes => {
+			{messages && messages.filter(mes => {
+				return (mes.senderId == userId || mes.senderId == activeChatUserId) && (mes.receiverId == userId || mes.receiverId == activeChatUserId)
+			}).map(mes => {
 				const { messageId, message, receiverId, senderId, id } = mes
 				return <Chat
 					message={message}
@@ -112,7 +115,7 @@ export default Chats;
 	// 		// 		edit={() => { this.handleEdit(number, text) }}
 	// 		// 		delete={() => { this.handleDelete(number) }} />
 	// 		// 	{this.props.messages.map(mes => {
-	// 		// 		const { messageId, message, receiverId, senderId } = mes
+	// 		// 		const { messageId, message, activeChatUserId, senderId } = mes
 	// 		// 		console.log(mes)
 	// 		// 		return <Chat
 	// 		// 			message={message}

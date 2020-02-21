@@ -1,6 +1,6 @@
 import { SET_RECEIVER_ID, UNSET_RECEIVER_ID } from '../constants/action-types'
 
-const receiverId = (state = null, action) => {
+const activeChatUserId = (state = null, action) => {
 	switch (action.type) {
 		case SET_RECEIVER_ID:
 			return action.id;
@@ -11,4 +11,4 @@ const receiverId = (state = null, action) => {
 	}
 }
 
-export default receiverId
+export default activeChatUserId

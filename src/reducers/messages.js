@@ -8,45 +8,45 @@ const initialState = {
 		messageId: 1,
 		message: 'hello there',
 		userId: 1111,
-		receiverId: 2222,
+		activeChatUserId: 2222,
 	},
 	2: {
 		messageId: 2,
 		message: 'hey',
 		userId: 1111,
-		receiverId: 2222,
+		activeChatUserId: 2222,
 	},
 	3: {
 		messageId: 3,
 		message: 'hi man',
 		userId: 2222,
-		receiverId: 1111,
+		activeChatUserId: 1111,
 	},
 	4: {
 		messageId: 4,
 		message: 'so whats up',
 		userId: 2222,
-		receiverId: 1111,
+		activeChatUserId: 1111,
 	},
 	5: {
 		messageId: 5,
 		message: `i'm doing good`,
 		userId: 1111,
-		receiverId: 2222,
+		activeChatUserId: 2222,
 	},
 }
 
 const messages = (state = initialState, action) => {
 	switch (action.type) {
 		case SEND_MESSAGE_START:
-			let { message, messageId, userId, receiverId } = action.payload;
+			let { message, messageId, userId, activeChatUserId } = action.payload;
 			return {
 				...state,
 				[messageId]: {
 					messageId,
 					message,
 					userId,
-					receiverId
+					activeChatUserId
 				}
 			};
 		case SEND_MESSAGE_SUCCESS:

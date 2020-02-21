@@ -5,7 +5,7 @@ import { sendMessageSuccess, sendMessageFail } from "../actions/action";
 
 
 function* handleSendMessage({ payload }) {
-    const { message, messageId, receiverId, senderId } = payload;
+    const { message, messageId, senderId, receiverId } = payload;
     try {
         const doc = yield call(
             rsf.firestore.addDocument,
@@ -13,8 +13,8 @@ function* handleSendMessage({ payload }) {
             {
                 message,
                 messageId,
-                receiverId,
                 senderId,
+                receiverId,
                 time: new Date()
             }
         )

@@ -1,14 +1,14 @@
 import React from 'react';
 import './User.css';
 import { useDispatch } from 'react-redux';
-import { setReceiverId } from '../../actions/action'
+import { setactiveChatUserId } from '../../actions/action'
 
 const User = ({ user }) => {
 	const dispatch = useDispatch();
 	const { firstName, lastName, id } = user;
 
 	const handleUserClick = (e) => {
-		dispatch(setReceiverId(id));
+		dispatch(setactiveChatUserId(id));
 	}
 
 	return (

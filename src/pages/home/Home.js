@@ -9,10 +9,10 @@ import store from '../../store/store';
 import { firestoreConnect } from 'react-redux-firebase';
 
 const Home = () => {
-    const { firebase, allUsers, receiverId } = useSelector(state => ({
+    const { firebase, allUsers, activeChatUserId } = useSelector(state => ({
         firebase: state.firebase,
         allUsers: state.firestore.ordered.users,
-        receiverId: state.receiverId
+        activeChatUserId: state.activeChatUserId
     }), shallowEqual);
 
     if (!firebase.auth.uid) {
@@ -32,7 +32,7 @@ const Home = () => {
             <Sidebar contacts={allUsers} />
             <Main
                 userFake={userFake}
-                receiverId={receiverId}
+                activeChatUserId={activeChatUserId}
                 user={user}
                 userId={userId} />
         </div>

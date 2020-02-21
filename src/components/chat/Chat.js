@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Chat = ({ message, clicked, senderId, userId }) => {
-    console.log(senderId, userId)
     let is_user_msg;
 
     if (senderId == userId) {

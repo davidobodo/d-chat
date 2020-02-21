@@ -12,7 +12,7 @@ import {
 
 } from '../constants/action-types'
 
-export const setReceiverId = (id) => {
+export const setactiveChatUserId = (id) => {
 	return {
 		type: SET_RECEIVER_ID,
 		id
