@@ -8,7 +8,10 @@ import {
 	DELETE_MESSAGE,
 	EDIT_MESSAGE,
 	EDITED_MESSAGE,
-	DETAILS_INFO
+	DETAILS_INFO,
+	POST_USER_STATUS_START,
+	POST_USER_STATUS_SUCCESS,
+	POST_USER_STATUS_FAIL,
 
 } from '../constants/action-types'
 
@@ -101,6 +104,27 @@ export const details = (number, text, is_user_msg, activeUserId) => {
 			is_user_msg,
 			activeUserId
 		}
+	}
+}
+
+export const postUserStatusStart = (userStatus, userId) => {
+	console.log(userStatus, userId)
+	return {
+		type: POST_USER_STATUS_START,
+		userStatus,
+		userId,
+	}
+}
+
+export const postUserStatusSuccess = () => {
+	return {
+		type: POST_USER_STATUS_SUCCESS,
+	}
+}
+export const postUserStatusFail = (error) => {
+	return {
+		type: POST_USER_STATUS_FAIL,
+		error
 	}
 }
 

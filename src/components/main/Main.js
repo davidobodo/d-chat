@@ -9,7 +9,8 @@ const Main = ({ userFake, activeChatUserId, user, userId }) => {
 			return <Empty
 				userFake={userFake}
 				activeChatUserId={activeChatUserId}
-				user={user} />;
+				user={user}
+				userId={userId} />;
 		} else {
 			return <ChatWindow activeChatUserId={activeChatUserId} userId={userId} />;
 		}
