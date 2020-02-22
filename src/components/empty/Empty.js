@@ -49,7 +49,7 @@ const Empty = ({ userFake, user, userId }) => {
 						value={userStatus} />
 				</form>
 			}
-			<button className="Empty__btn">Start a conversation</button>
+			<button className="Empty__btn">Click on a user to start a conversation</button>
 			<p className="Empty__info">
 				Search for someone to start chatting with or go to Contacts
 				to see who
