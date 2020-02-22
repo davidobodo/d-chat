@@ -95,7 +95,6 @@ export const editedMessage = (typing, activeUserId, selectedMessage) => {
 }
 
 export const details = (number, text, is_user_msg, activeUserId) => {
-	//receive all as payload from chats file
 	return {
 		type: DETAILS_INFO,
 		payload: {
@@ -108,7 +107,6 @@ export const details = (number, text, is_user_msg, activeUserId) => {
 }
 
 export const postUserStatusStart = (userStatus, userId) => {
-	console.log(userStatus, userId)
 	return {
 		type: POST_USER_STATUS_START,
 		userStatus,

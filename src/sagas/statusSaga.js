@@ -11,7 +11,7 @@ function* handlePostUserStatus({ userStatus, userId }) {
             'status',
             {
                 userStatus,
-                userId
+                statusUserId: userId
             }
         )
         console.log(doc, "success")

@@ -1,13 +1,19 @@
 import React, { useState } from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import "./Empty.css";
 import { signOutStart } from '../../actions/authActions';
-import { postUserStatusStart } from '../../actions/action'
+import { postUserStatusStart } from '../../actions/action';
+import { firestoreConnect } from 'react-redux-firebase';
 
 
 const Empty = ({ userFake, user, userId }) => {
 	const [userStatus, setUserStatus] = useState('');
 	const dispatch = useDispatch();
+	const allStatus = useSelector(state => state.firestore.ordered.status, shallowEqual);
+	let _userStatus;
+	if (allStatus) {
+		_userStatus = allStatus.filter(status => status.statusUserId == userId);
+	}
 
 	const handleOnChange = (e) => {
 		setUserStatus(e.target.value);
@@ -17,7 +23,6 @@ const Empty = ({ userFake, user, userId }) => {
 		e.preventDefault();
 		dispatch(postUserStatusStart(userStatus, userId))
 	}
-
 
 	const handleUserSignOut = () => {
 		dispatch(signOutStart())
@@ -32,16 +37,18 @@ const Empty = ({ userFake, user, userId }) => {
 			<button className="Empty__logout-button" onClick={handleUserSignOut}>Logout</button>
 			<h1 className="Empty__name">Welcome, {firstName} {lastName} </h1>
 			<img src={profile_pic} alt={firstName} className="Empty__img" />
-			{/* <p className="Empty__status">
-				<b>Status:</b> {status}
-			</p> */}
-			<form onSubmit={handleOnSubmit}>
-				<input
-					type="text"
-					placeholder="what's on your mind?"
-					onChange={handleOnChange}
-					value={userStatus} />
-			</form>
+			{_userStatus && _userStatus[0] ?
+				<p className="Empty__status">
+					<b>Status:</b> {_userStatus[0].userStatus}
+				</p>
+				: <form onSubmit={handleOnSubmit}>
+					<input
+						type="text"
+						placeholder="what's on your mind?"
+						onChange={handleOnChange}
+						value={userStatus} />
+				</form>
+			}
 			<button className="Empty__btn">Start a conversation</button>
 			<p className="Empty__info">
 				Search for someone to start chatting with or go to Contacts
@@ -51,4 +58,5 @@ const Empty = ({ userFake, user, userId }) => {
 		</div>
 	);
 };
-export default Empty;
+
+export default firestoreConnect(() => ['status'])(Empty);
