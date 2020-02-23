@@ -21,7 +21,6 @@ const Empty = ({ userFake, user, userId }) => {
 
 	if (allPictures) {
 		_userPicture = allPictures.filter(picture => picture.pictureUserId == userId);
-		console.log(_userPicture)
 	}
 
 	const handleOnChange = (e) => {
