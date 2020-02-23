@@ -12,6 +12,9 @@ import {
 	POST_USER_STATUS_START,
 	POST_USER_STATUS_SUCCESS,
 	POST_USER_STATUS_FAIL,
+	POST_PROFILE_PICTURE_START,
+	POST_PROFILE_PICTURE_SUCCESS,
+	POST_PROFILE_PICTURE_FAIL
 
 } from '../constants/action-types'
 
@@ -122,6 +125,21 @@ export const postUserStatusSuccess = () => {
 export const postUserStatusFail = (error) => {
 	return {
 		type: POST_USER_STATUS_FAIL,
+		error
+	}
+}
+
+export const postProfilePictureStart = (picture, userId) => {
+	return {
+		type: POST_PROFILE_PICTURE_START,
+		picture,
+		userId
+	}
+}
+
+export const postProfilePictureFail = (error) => {
+	return {
+		type: POST_PROFILE_PICTURE_START,
 		error
 	}
 }

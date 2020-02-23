@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import "./Empty.css";
 import { signOutStart } from '../../actions/authActions';
-import { postUserStatusStart } from '../../actions/action';
+import { postUserStatusStart, postProfilePictureStart } from '../../actions/action';
 import { firestoreConnect } from 'react-redux-firebase';
 
 
@@ -28,6 +28,17 @@ const Empty = ({ userFake, user, userId }) => {
 		dispatch(signOutStart())
 	}
 
+	const handleUploadPicture = (e) => {
+		const file = e.target.files[0];
+
+		const reader = new FileReader();
+		reader.onload = function () {
+			dispatch(postProfilePictureStart(reader.result, userId))
+		}
+
+		reader.readAsDataURL(file);
+	}
+
 	const { name, profile_pic, status } = userFake;
 
 	const { firstName, lastName } = user;
@@ -37,6 +48,10 @@ const Empty = ({ userFake, user, userId }) => {
 			<button className="Empty__logout-button" onClick={handleUserSignOut}>Logout</button>
 			<h1 className="Empty__name">Welcome, {firstName} {lastName} </h1>
 			<img src={profile_pic} alt={firstName} className="Empty__img" />
+			<input
+				type="file"
+				accept=".jpg, .jpeg, .png, .pdf"
+				onChange={handleUploadPicture} />
 			{_userStatus && _userStatus[0] ?
 				<p className="Empty__status">
 					<b>Status:</b> {_userStatus[0].userStatus}
