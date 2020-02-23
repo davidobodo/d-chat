@@ -10,9 +10,18 @@ const Empty = ({ userFake, user, userId }) => {
 	const [userStatus, setUserStatus] = useState('');
 	const dispatch = useDispatch();
 	const allStatus = useSelector(state => state.firestore.ordered.status, shallowEqual);
+	const allPictures = useSelector(state => state.firestore.ordered.pictures, shallowEqual);
+
 	let _userStatus;
+	let _userPicture;
+
 	if (allStatus) {
 		_userStatus = allStatus.filter(status => status.statusUserId == userId);
+	}
+
+	if (allPictures) {
+		_userPicture = allPictures.filter(picture => picture.pictureUserId == userId);
+		console.log(_userPicture)
 	}
 
 	const handleOnChange = (e) => {
@@ -42,16 +51,17 @@ const Empty = ({ userFake, user, userId }) => {
 	const { name, profile_pic, status } = userFake;
 
 	const { firstName, lastName } = user;
-
 	return (
 		<div className="Empty">
 			<button className="Empty__logout-button" onClick={handleUserSignOut}>Logout</button>
 			<h1 className="Empty__name">Welcome, {firstName} {lastName} </h1>
-			<img src={profile_pic} alt={firstName} className="Empty__img" />
-			<input
-				type="file"
-				accept=".jpg, .jpeg, .png, .pdf"
-				onChange={handleUploadPicture} />
+			{_userPicture && _userPicture[0] ?
+				<img src={_userPicture[0].picture} alt={firstName} className="Empty__img" />
+				: <input
+					type="file"
+					accept=".jpg, .jpeg, .png, .pdf"
+					onChange={handleUploadPicture} />
+			}
 			{_userStatus && _userStatus[0] ?
 				<p className="Empty__status">
 					<b>Status:</b> {_userStatus[0].userStatus}
@@ -74,4 +84,4 @@ const Empty = ({ userFake, user, userId }) => {
 	);
 };
 
-export default firestoreConnect(() => ['status'])(Empty);
+export default firestoreConnect(() => ['status', 'pictures'])(Empty);
