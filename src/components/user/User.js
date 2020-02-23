@@ -31,7 +31,7 @@ const User = ({ user }) => {
 			{_userPicture && _userPicture[0] && <img src={_userPicture[0].picture} alt={firstName} className="User__pic" />}
 			<div className="User__details">
 				<p className="User__details">{firstName} {lastName}</p>
-				{_userStatus && _userStatus[0] && <p className="User__details">{_userStatus[0].userStatus}</p>}
+				{_userStatus && _userStatus[0] && <p className="User__details status">{_userStatus[0].userStatus}</p>}
 			</div>
 		</div>
 	)

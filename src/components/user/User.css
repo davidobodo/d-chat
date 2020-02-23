@@ -8,8 +8,11 @@
 	cursor: pointer;
 }
 .User__pic {
-	width: 50px;
 	border-radius: 50%;
+	height: 50px;
+	width: 50px;
+	flex-shrink: 0;
+	object-fit: cover;
 }
 .User__details {
 	display: none;
@@ -19,10 +22,16 @@
 	.User__details {
 		display: block;
 		padding: 0 0 0 1rem;
+		margin-bottom: 5px;
 	}
 	.User__details-name {
 		margin: 0;
 		color: rgba(255, 255, 255, 0.8);
 		font-size: 1rem;
+	}
+	.User__details.status{
+		font-style: italic;
+		opacity: 0.3;
+		font-size: 14px;
 	}
 }
