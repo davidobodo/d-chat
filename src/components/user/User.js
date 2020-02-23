@@ -3,6 +3,8 @@ import './User.css';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { setactiveChatUserId } from '../../actions/action';
 import { firestoreConnect } from 'react-redux-firebase';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 const User = ({ user }) => {
 	const { firstName, lastName, id } = user;
@@ -28,7 +30,9 @@ const User = ({ user }) => {
 
 	return (
 		<div className="User" onClick={handleUserClick}>
-			{_userPicture && _userPicture[0] && <img src={_userPicture[0].picture} alt={firstName} className="User__pic" />}
+			{_userPicture && _userPicture[0]
+				? <img src={_userPicture[0].picture} alt={firstName} className="User__pic" />
+				: <FontAwesomeIcon icon={faUser} />}
 			<div className="User__details">
 				<p className="User__details">{firstName} {lastName}</p>
 				{_userStatus && _userStatus[0] && <p className="User__details status">{_userStatus[0].userStatus}</p>}

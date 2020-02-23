@@ -17,6 +17,16 @@
 .User__details {
 	display: none;
 }
+.User svg{
+	width: 50px !important;
+	height: 50px;
+	background-color:#000000;
+	border-radius: 50%;
+	overflow: hidden !important;
+	border: 1px solid #ffffff;
+	opacity: 0.2;
+	margin-right: 0;
+}
 /* not small devices */
 @media (min-width: 576px) {
 	.User__details {
