@@ -16,7 +16,7 @@ const MessageInput = ({ value, activeChatUserId, userId }) => {
 		e.preventDefault();
 		const messageId = uuidv4();
 		dispatch(sendMessageStart(message, messageId, userId, activeChatUserId))
-		// setMessage('')
+		setMessage('')
 		// const { typing, activeUserId, selectedMessage } = state;
 
 		// if (selectedMessage !== null) {
@@ -31,7 +31,7 @@ const MessageInput = ({ value, activeChatUserId, userId }) => {
 			<input
 				className="Message__input"
 				onChange={handleOnChange}
-				// value={message}
+				value={message}
 				placeholder="write a message"
 			/>
 		</form>
