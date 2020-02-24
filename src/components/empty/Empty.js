@@ -4,6 +4,8 @@ import "./Empty.css";
 import { signOutStart } from '../../actions/authActions';
 import { postUserStatusStart, postProfilePictureStart } from '../../actions/action';
 import { firestoreConnect } from 'react-redux-firebase';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 
 const Empty = ({ userFake, user, userId }) => {
@@ -56,10 +58,14 @@ const Empty = ({ userFake, user, userId }) => {
 			<h1 className="Empty__name">Welcome, {firstName} {lastName} </h1>
 			{_userPicture && _userPicture[0] ?
 				<img src={_userPicture[0].picture} alt={firstName} className="Empty__img" />
-				: <input
-					type="file"
-					accept=".jpg, .jpeg, .png, .pdf"
-					onChange={handleUploadPicture} />
+				: <div className="Empty__fileUpload-wrapper">
+					<FontAwesomeIcon icon={faUser} />
+					<input
+						type="file"
+						accept=".jpg, .jpeg, .png, .pdf"
+						onChange={handleUploadPicture} />
+				</div>
+
 			}
 			{_userStatus && _userStatus[0] ?
 				<p className="Empty__status">

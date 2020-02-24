@@ -138,6 +138,7 @@ export const postProfilePictureStart = (picture, userId) => {
 }
 
 export const postProfilePictureFail = (error) => {
+	console.log(error)
 	return {
 		type: POST_PROFILE_PICTURE_START,
 		error
