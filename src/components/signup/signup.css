@@ -84,3 +84,14 @@ svg{
     opacity: 0.3;
 }
 
+@media(max-width: 765px){
+    .signup-wrapper{
+            display: none;
+    }
+
+    .scale-up{
+        display: block;
+        width: 100%;
+        transform: scale(1) !important;
+    }
+}

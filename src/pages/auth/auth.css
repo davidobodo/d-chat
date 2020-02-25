@@ -14,3 +14,9 @@
     z-index: -1;
     transform: rotate(-30deg);
 }
+
+@media(max-width: 765px){
+    .auth__wrapper{
+        padding: 20px;
+    }
+}
