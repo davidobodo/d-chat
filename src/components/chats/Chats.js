@@ -16,8 +16,7 @@ const Chats = ({ messages, userId, activeChatUserId }) => {
 		// ref={this.chatsRef}
 		>
 			{messages && messages.filter(mes => {
-				console.log(mes)
-				return (mes.senderId == userId || mes.senderId == activeChatUserId) && (mes.receiverId == userId || mes.receiverId == activeChatUserId)
+				return (mes.senderId == userId && mes.receiverId == activeChatUserId) || (mes.senderId == activeChatUserId && mes.receiverId == userId)
 			}).map(mes => {
 				const { messageId, message, receiverId, senderId, id, time } = mes
 				return <Chat
