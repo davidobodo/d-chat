@@ -14,14 +14,14 @@ import { createFirestoreInstance } from 'redux-firestore';
 import ReduxSagaFirebase from 'redux-saga-firebase';
 
 const fbConfig = {
-    apiKey: "AIzaSyAwuajOuBV1dZQOnDUVziiQwjwhBCfXndc",
-    authDomain: "d-chat-98abe.firebaseapp.com",
-    databaseURL: "https://d-chat-98abe.firebaseio.com",
-    projectId: "d-chat-98abe",
-    storageBucket: "d-chat-98abe.appspot.com",
-    messagingSenderId: "441517185856",
-    appId: "1:441517185856:web:27deb6a5591c7403bd78a5",
-    measurementId: "G-TH6YGMVDT4"
+    apiKey: process.env.REACT_APP_apiKey,
+    authDomain: process.env.REACT_APP_authDomain,
+    databaseURL: process.env.REACT_APP_databaseURL,
+    projectId: process.env.REACT_APP_projectId,
+    storageBucket: process.env.REACT_APP_storageBucket,
+    messagingSenderId: process.env.REACT_APP_messagingSenderId,
+    appId: process.env.REACT_APP_appId,
+    measurementId: process.env.REACT_APP_measurementId
 };
 
 const firebaseApp = firebase.initializeApp(fbConfig);
