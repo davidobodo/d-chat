@@ -46,6 +46,7 @@
         background-color: #ffffff;
         box-shadow:  5px 5px 17px #ededed, 
         -5px -5px 17px #ffffff;
+        position: relative;
 }
 
 svg{
@@ -57,7 +58,6 @@ svg{
         outline: none;
         border: none;
         flex: 1;
-        
 }
 
 .forgot-password{
@@ -105,7 +105,24 @@ svg{
 
 .login-wrapper ::placeholder{
         opacity: 0.3;
-    }
+}
+
+.create-btn{
+        outline: none;
+}
+
+.error{
+        border: 1px solid #ff0000;
+}
+
+.error-message{
+        color: #ff0000;
+        position: absolute;
+        font-size: 12px;
+        bottom: -18px;
+}
+
+
 
 @media(max-width: 765px){
         .login-wrapper{
