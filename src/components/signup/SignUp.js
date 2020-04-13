@@ -12,10 +12,6 @@ import blob1 from "../../assets/images/blob1.svg";
 import blob2 from "../../assets/images/blob2.svg";
 
 
-
-
-
-
 const SignUp = ({ handleSetAuthState, requestCreateAccount }) => {
     const dispatch = useDispatch();
     const [userDetails, setUserDetails] = useState({
@@ -45,6 +41,28 @@ const SignUp = ({ handleSetAuthState, requestCreateAccount }) => {
             dispatch(requestSignUpStart(userDetails));
         }
     }
+
+    const handleOnKeyDown = e => {
+        const { name } = e.target;
+
+        if (e.key === "Enter") return;
+
+        if (name === "firstName") {
+            setFirstNameHasError(false);
+        }
+
+        if (name === "lastName") {
+            setLastNameHasError(false);
+        }
+
+        if (name === "email") {
+            setEmailHasError(false);
+        }
+
+        if (name === "password" && userDetails.password.length > 6) {
+            setPasswordHasError(false);
+        }
+    };
 
     const handleValidateForm = e => {
         e.preventDefault();
@@ -85,7 +103,7 @@ const SignUp = ({ handleSetAuthState, requestCreateAccount }) => {
             );
         }
 
-        // handleOnSubmit();
+        handleOnSubmit();
     };
     const handleOnChange = (e) => {
         const { name, value } = e.target;
@@ -155,6 +173,7 @@ const SignUp = ({ handleSetAuthState, requestCreateAccount }) => {
                                 type={type}
                                 placeholder={placeholder}
                                 onChange={handleOnChange}
+                                onKeyDown={handleOnKeyDown}
                                 name={name} />
                             {inputHasError && <div className='error-message'>{inputErrorMessage}</div>}
                         </div>)

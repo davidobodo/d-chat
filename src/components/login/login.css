@@ -85,6 +85,11 @@ svg{
         cursor: pointer;
         outline: none;
         border-radius: 26px;
+        opacity: 0.5;
+}
+
+.login-btn button:hover{
+        opacity: 1;
 }
 
 .login-wrapper h5{

@@ -8,7 +8,8 @@ import {
 } from "../constants/action-types";
 
 const initialState = {
-    user: null
+    user: null,
+    isLoading: false,
 }
 
 export default (state = initialState, action) => {
@@ -17,27 +18,33 @@ export default (state = initialState, action) => {
         case REQUEST_SIGNUP_START:
             return {
                 ...state,
+                isLoading: true
             };
         case REQUEST_SIGNUP_SUCCESS:
             return {
                 ...state,
-                user: payload
+                user: payload,
+                isLoading: false
             };
         case REQUEST_SIGNUP_FAIL:
             return {
                 ...state,
+                isLoading: false
             };
         case REQUEST_USERLOGIN_START:
             return {
                 ...state,
+                isLoading: true
             };
         case REQUEST_USERLOGIN_SUCCESS:
             return {
                 ...state,
+                isLoading: false
             };
         case REQUEST_USERLOGIN_FAIL:
             return {
                 ...state,
+                isLoading: false
             };
         default:
             return state;

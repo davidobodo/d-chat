@@ -10,16 +10,15 @@ import blob from "../../assets/images/blob2.svg";
 import "./login.css";
 
 
-
 const Login = ({ handleSetAuthState, requestCreateAccount }) => {
     const dispatch = useDispatch();
+
     const [userDetails, setUserDetails] = useState({
         email: '',
         password: '',
     })
     const [emailHasError, setEmailHasError] = useState(false);
     const [passwordHasError, setPasswordHasError] = useState(false);
-
     const [emailErrorMessage, setEmailErrorMessage] = useState('');
     const [passwordErrormessage, setPasswordErrorMessage] = useState('');
 
@@ -28,20 +27,23 @@ const Login = ({ handleSetAuthState, requestCreateAccount }) => {
         setUserDetails({ ...userDetails, [name]: value })
     }
 
-    const handleOnKeyDown = e => {
-        const { name } = e.target;
-        if (e.key === 'Enter') return;
+    // const handleOnKeyDown = e => {
+    //     const { name } = e.target;
+    //     if (e.key === 'Enter') return;
 
-        if (name === 'email') {
-            setEmailHasError(false)
-        }
+    //     if (name === 'email') {
+    //         setEmailHasError(false)
+    //     }
 
-        if (name === 'password' && userDetails.password.length > 6) {
-            setPasswordHasError(false)
-        }
-    }
+    //     if (name === 'password' && userDetails.password.length > 6) {
+    //         setPasswordHasError(false)
+    //     }
+    // }
 
     const handleOnSubmit = () => {
+        if (passwordHasError === false && emailHasError === false) {
+            console.log('hello')
+        }
         if (!emailHasError && !passwordHasError) {
             dispatch(requestUserLogin(userDetails));
         }
@@ -50,9 +52,8 @@ const Login = ({ handleSetAuthState, requestCreateAccount }) => {
     const handleValidateForm = e => {
         e.preventDefault();
         const { email, password } = userDetails;
-        console.log(email, password)
 
-        if (password <= 6) {
+        if (password.length <= 5) {
             setPasswordHasError(true);
             setPasswordErrorMessage('Password must be more than 6 characters')
         }
@@ -62,8 +63,7 @@ const Login = ({ handleSetAuthState, requestCreateAccount }) => {
             setEmailErrorMessage("Insert a valid email");
         }
 
-        // handleOnSubmit()
-
+        handleOnSubmit()
     }
 
     const INPUT_FIELDS = [
@@ -85,6 +85,9 @@ const Login = ({ handleSetAuthState, requestCreateAccount }) => {
         },
     ]
 
+    console.log({ emailHasError }, { passwordHasError })
+
+
     const should_scale = requestCreateAccount ? "login-wrapper scale-down" : "login-wrapper";
 
     return (
@@ -92,7 +95,7 @@ const Login = ({ handleSetAuthState, requestCreateAccount }) => {
             <h1>Hello</h1>
             <h3>Sign in to your account</h3>
             <img src={blob} alt="blob" className="login-wrapper__image" />
-            <form onSubmit={handleValidateForm} noValidate>
+            <form onSubmit={handleValidateForm} onChange={handleOnChange} noValidate>
                 {INPUT_FIELDS.map(field => {
                     const { name, type, placeholder, icon, inputHasError, inputErrorMessage } = field;
                     return (
@@ -101,8 +104,8 @@ const Login = ({ handleSetAuthState, requestCreateAccount }) => {
                             <input
                                 type={type}
                                 placeholder={placeholder}
-                                onChange={handleOnChange}
-                                onKeyDown={handleOnKeyDown}
+
+                                // onKeyDown={handleOnKeyDown}
                                 name={name} />
                             {inputHasError && <div className='error-message'>{inputErrorMessage}</div>}
                         </div>)

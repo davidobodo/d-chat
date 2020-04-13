@@ -10,11 +10,6 @@ import {
     SIGNOUT_FAIL,
 } from "../constants/action-types";
 
-// export const requestSignUpStart = (payload) => ({
-//     type: REQUEST_SIGNUP_START,
-//     payload,
-// })
-
 export const requestSignUpStart = (payload) => {
     return ({
         type: REQUEST_SIGNUP_START,

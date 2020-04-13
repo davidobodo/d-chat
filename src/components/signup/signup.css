@@ -61,6 +61,11 @@ svg{
     cursor: pointer;
     outline: none;
     border-radius: 26px;
+    opacity: 0.5;
+}
+
+.signup-btn button:hover{
+    opacity: 1;
 }
 
 .scale-up{
