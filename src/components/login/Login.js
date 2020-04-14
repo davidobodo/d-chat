@@ -19,6 +19,10 @@ const Login = ({ handleSetAuthState, requestCreateAccount }) => {
     })
     const [emailHasError, setEmailHasError] = useState(false);
     const [passwordHasError, setPasswordHasError] = useState(false);
+
+    let _emailHasError = false;
+    let _passwordHasError = false;
+
     const [emailErrorMessage, setEmailErrorMessage] = useState('');
     const [passwordErrormessage, setPasswordErrorMessage] = useState('');
 
@@ -41,12 +45,9 @@ const Login = ({ handleSetAuthState, requestCreateAccount }) => {
     // }
 
     const handleOnSubmit = () => {
-        if (passwordHasError === false && emailHasError === false) {
-            console.log('hello')
-        }
-        if (!emailHasError && !passwordHasError) {
-            dispatch(requestUserLogin(userDetails));
-        }
+
+        if (_emailHasError || _passwordHasError) return
+        dispatch(requestUserLogin(userDetails));
     }
 
     const handleValidateForm = e => {
@@ -54,17 +55,20 @@ const Login = ({ handleSetAuthState, requestCreateAccount }) => {
         const { email, password } = userDetails;
 
         if (password.length <= 5) {
+            _passwordHasError = true;
             setPasswordHasError(true);
             setPasswordErrorMessage('Password must be more than 6 characters')
         }
 
         if (!EmailValidator.validate(email)) {
+            _emailHasError = true;
             setEmailHasError(true);
             setEmailErrorMessage("Insert a valid email");
         }
 
-        handleOnSubmit()
+        handleOnSubmit();
     }
+
 
     const INPUT_FIELDS = [
         {
@@ -84,8 +88,6 @@ const Login = ({ handleSetAuthState, requestCreateAccount }) => {
             inputErrorMessage: passwordErrormessage
         },
     ]
-
-    console.log({ emailHasError }, { passwordHasError })
 
 
     const should_scale = requestCreateAccount ? "login-wrapper scale-down" : "login-wrapper";
