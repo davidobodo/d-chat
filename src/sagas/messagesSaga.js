@@ -1,13 +1,13 @@
 import { takeEvery, put, all, call } from "redux-saga/effects";
 import { SEND_MESSAGE_START } from "../constants/action-types";
 import { rsf } from "../index";
-import { sendMessageSuccess, sendMessageFail } from "../actions/action";
+import { sendMessageFail } from "../actions/action";
 
 
 function* handleSendMessage({ payload }) {
     const { message, messageId, senderId, receiverId } = payload;
     try {
-        const doc = yield call(
+        yield call(
             rsf.firestore.addDocument,
             'messages',
             {
@@ -18,7 +18,6 @@ function* handleSendMessage({ payload }) {
                 time: new Date()
             }
         )
-        console.log(doc, "success")
     } catch (err) {
         yield put(sendMessageFail(err.message))
     }

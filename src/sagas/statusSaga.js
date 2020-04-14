@@ -1,7 +1,7 @@
 import { takeEvery, put, all, call } from "redux-saga/effects";
 import { POST_USER_STATUS_START } from "../constants/action-types";
 import { rsf } from "../index";
-import { postUserStatusSuccess, postUserStatusFail } from "../actions/action";
+import { postUserStatusFail } from "../actions/action";
 
 
 function* handlePostUserStatus({ userStatus, userId }) {

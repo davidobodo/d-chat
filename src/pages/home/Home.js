@@ -23,7 +23,7 @@ const Home = () => {
     const userId = firebase.auth.uid;
     //----------------------------------------------------------
     // previous dummy contact details:
-    const { contacts, userFake } = store.getState();
+    const { userFake } = store.getState();
     //----------------------------------------------------------
 
 

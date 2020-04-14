@@ -31,19 +31,21 @@ const SignUp = ({ handleSetAuthState, requestCreateAccount }) => {
     const [emailErrorMessage, setEmailErrorMessage] = useState();
     const [passwordErrorMessage, setPasswordErrorMessage] = useState();
 
-    const handleOnSubmit = (e) => {
-        if (
-            !firstNameHasError &&
-            !lastNameHasError &&
-            !emailHasError &&
-            !passwordHasError
-        ) {
-            dispatch(requestSignUpStart(userDetails));
-        }
+    let _firstNameHasError = false;
+    let _lastNameHasError = false;
+    let _emailHasError = false;
+    let _passwordHasError = false;
+
+    const handleOnChange = (e) => {
+        const { name, value } = e.target;
+        setUserDetails({ ...userDetails, [name]: value })
     }
+
+
 
     const handleOnKeyDown = e => {
         const { name } = e.target;
+        const { password, email } = userDetails
 
         if (e.key === "Enter") return;
 
@@ -56,60 +58,70 @@ const SignUp = ({ handleSetAuthState, requestCreateAccount }) => {
         }
 
         if (name === "email") {
-            setEmailHasError(false);
+            if (EmailValidator.validate(email)) {
+                setEmailHasError(false);
+            }
         }
 
-        if (name === "password" && userDetails.password.length > 6) {
+        if (name === "password" && password.length + 1 >= 6) {
             setPasswordHasError(false);
         }
     };
 
-    const handleValidateForm = e => {
-        e.preventDefault();
+    const handleValidateForm = () => {
         const { firstName, lastName, email, password } = userDetails;
         const letters = /^[A-Za-z]+$/;
 
         //firstname
         if (firstName === "") {
+            _firstNameHasError = true;
             setFirstNameHasError(true);
             setFirstNameErrorMessage("firstName cannot be empty");
         }
         if (!firstName.match(letters)) {
+            _firstNameHasError = true;
             setFirstNameHasError(true);
             setFirstNameErrorMessage("firstName must include only letters");
         }
 
         // lastname;
         if (lastName === "") {
+            _lastNameHasError = true;
             setLastNameHasError(true);
             setLastNameErrorMessage("lastName cannot be empty");
         }
         if (!lastName.match(letters)) {
+            _lastNameHasError = true;
             setLastNameHasError(true);
             setLastNameErrorMessage("lastName must include only letters");
         }
 
         //email
         if (!EmailValidator.validate(email)) {
+            _emailHasError = true;
             setEmailHasError(true);
             setEmailErrorMessage("Insert a valid email");
         }
 
         //password
-        if (password.length <= 6) {
+        if (password.length < 6) {
+            _passwordHasError = true;
             setPasswordHasError(true);
             setPasswordErrorMessage(
                 "password must be greater than six characters"
             );
         }
 
-        handleOnSubmit();
+        if (_firstNameHasError || _lastNameHasError || _emailHasError || _passwordHasError) return true;
     };
-    const handleOnChange = (e) => {
-        const { name, value } = e.target;
-        setUserDetails({ ...userDetails, [name]: value })
-    }
 
+    const handleOnSubmit = (e) => {
+        e.preventDefault();
+        const err = handleValidateForm()
+
+        if (err) return;
+        dispatch(requestSignUpStart(userDetails));
+    }
 
 
     const INPUT_FIELDS = [
@@ -156,14 +168,13 @@ const SignUp = ({ handleSetAuthState, requestCreateAccount }) => {
         },
     ]
 
-    const should_scale = requestCreateAccount ? "signup-wrapper scale-up" : "signup-wrapper";
 
     return (
-        <div className={should_scale}>
+        <div className={requestCreateAccount ? "signup-wrapper scale-up" : "signup-wrapper"}>
             <div className="back-icon" onClick={handleSetAuthState}>&#8592;</div>
             <img src={blob2} alt="blob2" className="orange-image" />
             <h2>Create account</h2>
-            <form onSubmit={handleValidateForm} noValidate>
+            <form onSubmit={handleOnSubmit} noValidate>
                 {INPUT_FIELDS.map(field => {
                     const { name, type, placeholder, icon, inputHasError, inputErrorMessage } = field;
                     return (

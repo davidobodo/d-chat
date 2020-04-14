@@ -4,7 +4,7 @@ import moment from 'moment';
 const Chat = ({ message, clicked, senderId, userId, time }) => {
     let is_user_msg;
 
-    if (senderId == userId) {
+    if (senderId === userId) {
         is_user_msg = true;
     } else {
         is_user_msg = false;

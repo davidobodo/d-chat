@@ -1,6 +1,5 @@
 import React from 'react'
 import './DelEdit.css'
-import { store } from '../../store/store'
 
 
 const DelEdit = (props) => {

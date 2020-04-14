@@ -1,24 +1,24 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './Chats.css'
-import store from '../../store/store'
-import { details } from '../../actions/action'
-import DelEdit from '../delEdit/DelEdit'
+// import store from '../../store/store'
+// import { details } from '../../actions/action'
+// import DelEdit from '../delEdit/DelEdit'
 import Chat from '../chat/Chat'
-import { editMessage } from '../../actions/action'
-import { deleteMessage } from '../../actions/action'
+// import { editMessage } from '../../actions/action'
+// import { deleteMessage } from '../../actions/action'
 
 
 const Chats = ({ messages, userId, activeChatUserId }) => {
-	const [editDel, setEditDel] = useState(false)
+	// const [editDel, setEditDel] = useState(false)
 	return (
 		<div
 			className="Chats"
 		// ref={this.chatsRef}
 		>
 			{messages && messages.filter(mes => {
-				return (mes.senderId == userId && mes.receiverId == activeChatUserId) || (mes.senderId == activeChatUserId && mes.receiverId == userId)
+				return (mes.senderId === userId && mes.receiverId === activeChatUserId) || (mes.senderId === activeChatUserId && mes.receiverId === userId)
 			}).map(mes => {
-				const { messageId, message, receiverId, senderId, id, time } = mes
+				const { message, senderId, id, time } = mes
 				return <Chat
 					message={message}
 					key={id}

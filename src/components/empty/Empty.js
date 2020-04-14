@@ -18,11 +18,11 @@ const Empty = ({ userFake, user, userId }) => {
 	let _userPicture;
 
 	if (allStatus) {
-		_userStatus = allStatus.filter(status => status.statusUserId == userId);
+		_userStatus = allStatus.filter(status => status.statusUserId === userId);
 	}
 
 	if (allPictures) {
-		_userPicture = allPictures.filter(picture => picture.pictureUserId == userId);
+		_userPicture = allPictures.filter(picture => picture.pictureUserId === userId);
 	}
 
 	const handleOnChange = (e) => {
@@ -49,7 +49,7 @@ const Empty = ({ userFake, user, userId }) => {
 		reader.readAsDataURL(file);
 	}
 
-	const { name, profile_pic, status } = userFake;
+	// const { name, profile_pic, status } = userFake;
 
 	const { firstName, lastName } = user;
 	return (

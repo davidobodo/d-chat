@@ -3,13 +3,12 @@ import { useSelector, shallowEqual } from "react-redux";
 import Header from '../header/Header'
 import Chats from '../chats/Chats'
 import store from '../../store/store'
-import _ from 'lodash'
 import './ChatWindow.css'
 import MessageInput from '../messageInput/MessageInput';
 import { firestoreConnect } from 'react-redux-firebase';
 
 const ChatWindow = ({ activeChatUserId, userId }) => {
-	const { allUsers, allMessages, firestoreMessages } = useSelector(state => ({
+	const { allUsers, firestoreMessages } = useSelector(state => ({
 		allUsers: state.firestore.ordered.users,
 		allMessages: state.messages,
 		firestoreMessages: state.firestore.ordered.messages

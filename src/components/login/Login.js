@@ -68,6 +68,7 @@ const Login = ({ handleSetAuthState, requestCreateAccount }) => {
         e.preventDefault();
 
         const err = handleValidateForm();
+        console.log(err)
 
         if (err) return
         dispatch(requestUserLogin(userDetails));

@@ -17,11 +17,11 @@ const User = ({ user }) => {
 	let _userPicture;
 
 	if (allStatus) {
-		_userStatus = allStatus.filter(status => status.statusUserId == id);
+		_userStatus = allStatus.filter(status => status.statusUserId === id);
 	}
 
 	if (allPictures) {
-		_userPicture = allPictures.filter(picture => picture.pictureUserId == id);
+		_userPicture = allPictures.filter(picture => picture.pictureUserId === id);
 	}
 
 	const handleUserClick = (e) => {
