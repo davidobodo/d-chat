@@ -5,7 +5,7 @@ import { sendMessageStart } from "../../actions/action";
 import uuidv4 from 'uuid';
 
 const MessageInput = ({ value, activeChatUserId, userId }) => {
-	const [message, setMessage] = useState();
+	const [message, setMessage] = useState('');
 	const dispatch = useDispatch();
 
 	const handleOnChange = (e) => {
