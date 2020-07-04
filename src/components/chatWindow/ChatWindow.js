@@ -35,5 +35,5 @@ const ChatWindow = ({ activeChatUserId, userId }) => {
 
 export default firestoreConnect([
 	{ collection: 'users' },
-	{ collection: 'messages', orderBy: ['time', 'asc'] }
+	{ collection: 'messages', orderBy: ['time', 'desc'] }
 ])(ChatWindow);

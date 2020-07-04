@@ -14,6 +14,7 @@ function* handleUserSignUp({ payload }) {
             email,
             password
         )
+        console.log(user)
         if (user) {
             firestore.collection('users').doc(user.user.uid).set({
                 firstName: firstName,
